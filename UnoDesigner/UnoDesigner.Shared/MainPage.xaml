@@ -1,0 +1,46 @@
+﻿<Page
+    x:Class="UnoDesigner.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:UnoDesigner"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:designer="using:Zafiro.Uwp.Designer"
+    mc:Ignorable="d">
+
+    <Page.DataContext>
+        <local:MainViewModel />
+    </Page.DataContext>
+
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <local:DesignerSurface 
+
+            ItemsSource="{Binding Items}" Style="{StaticResource DesignerSurfaceStyle}" Background="Beige"
+            LeftBinding="{Binding Left}"
+            TopBinding="{Binding Top}"
+            WidthBinding="{Binding Width}"
+            HeightBinding="{Binding Height}">
+
+
+            <local:DesignerSurface.ItemTemplate>
+                <DataTemplate>
+                    <Border Background="Red" />
+                </DataTemplate>
+            </local:DesignerSurface.ItemTemplate>
+        </local:DesignerSurface>
+
+        <Canvas Grid.Row="1" Background="Gainsboro">
+            <Rectangle Canvas.Left="100" Canvas.Top="200" Fill="Red"
+                       Width="150"
+                       Height="100" />
+        </Canvas>
+
+    </Grid>
+
+</Page>
