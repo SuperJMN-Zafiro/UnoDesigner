@@ -48,7 +48,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="unoDesigner:DesignerItem">
                     <Border>
-                        <ContentPresenter x:Name="ContentPresenter" IsHitTestVisible="False" />
+                        <ContentPresenter x:Name="ContentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" IsHitTestVisible="False" />
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
