@@ -9,6 +9,11 @@ namespace UnoDesigner.Converters
     {
         public static BitmapSource FromStreamToBitmapSource(Stream stream)
         {
+#if HAS_UNO
+            BitmapImage result = new BitmapImage();
+            result.SetSource(stream);
+            return result;
+#else
             using (InMemoryRandomAccessStream ms = new InMemoryRandomAccessStream())
             {
                 using (DataWriter writer = new DataWriter(ms.GetOutputStreamAt(0)))
@@ -20,6 +25,7 @@ namespace UnoDesigner.Converters
                 result.SetSource(ms);
                 return result;
             }
+#endif
         }
     }
 }
