@@ -51,6 +51,7 @@
                 <ControlTemplate TargetType="design:DesignerItem">
                     <Border>
                         <ContentPresenter x:Name="ContentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}"
+                                          ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
                                           IsHitTestVisible="False" />
                     </Border>
                 </ControlTemplate>
