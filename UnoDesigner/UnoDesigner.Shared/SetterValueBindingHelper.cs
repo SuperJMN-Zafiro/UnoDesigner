@@ -209,14 +209,9 @@ namespace UnoDesigner
                 }
             }
 
-            // Get the DependencyProperty for which to set the Binding
-            DependencyProperty property = null;
-            var field = type.GetRuntimeProperty(item.Property + "Property");
-            if (null != field)
-            {
-                property = field.GetValue(null) as DependencyProperty;
-            }
-            if (null == property)
+            var dp = GetDependencyProperty(type, item.Property);
+            
+            if (dp == null)
             {
                 // Unable to find the requsted property
                 throw new ArgumentException(
@@ -228,7 +223,25 @@ namespace UnoDesigner
             }
 
             // Set the specified Binding on the specified property
-            element.SetBinding(property, item.Binding);
+            element.SetBinding(dp, item.Binding);
+        }
+
+        private static DependencyProperty GetDependencyProperty(Type owner, string propertyName)
+        {
+            var dpName = propertyName + "Property";
+
+#if WINDOWS_UWP
+            var member = owner.GetRuntimeProperty(dpName);
+#else
+            var member = owner.GetRuntimeField(dpName);
+#endif
+
+            if (member != null)
+            {
+                return member.GetValue(null) as DependencyProperty;
+            }
+
+            return null;
         }
 
         /// <summary>

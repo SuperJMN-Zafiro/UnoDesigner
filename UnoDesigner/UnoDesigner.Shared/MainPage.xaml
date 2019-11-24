@@ -11,35 +11,20 @@
         <local:MainViewModel />
     </Page.DataContext>
 
-    <Grid>
+    <local:DesignerSurface 
 
-        <Grid.RowDefinitions>
-            <RowDefinition />
-            <RowDefinition />
-        </Grid.RowDefinitions>
-
-        <local:DesignerSurface 
-
-            ItemsSource="{Binding Items}" Style="{StaticResource DesignerSurfaceStyle}" Background="Beige"
-            LeftBinding="{Binding Left}"
-            TopBinding="{Binding Top}"
-            WidthBinding="{Binding Width}"
-            HeightBinding="{Binding Height}">
+        ItemsSource="{Binding Items}" Style="{StaticResource DesignerSurfaceStyle}" Background="Beige"
+        LeftBinding="{Binding Left}"
+        TopBinding="{Binding Top}"
+        WidthBinding="{Binding Width}"
+        HeightBinding="{Binding Height}">
 
 
-            <local:DesignerSurface.ItemTemplate>
-                <DataTemplate>
-                    <Border Background="Red" />
-                </DataTemplate>
-            </local:DesignerSurface.ItemTemplate>
-        </local:DesignerSurface>
-
-        <Canvas Grid.Row="1" Background="Gainsboro">
-            <Rectangle Canvas.Left="100" Canvas.Top="200" Fill="Red"
-                       Width="150"
-                       Height="100" />
-        </Canvas>
-
-    </Grid>
+        <local:DesignerSurface.ItemTemplate>
+            <DataTemplate>
+                <Border Background="Red" />
+            </DataTemplate>
+        </local:DesignerSurface.ItemTemplate>
+    </local:DesignerSurface>
 
 </Page>
