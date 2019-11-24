@@ -17,7 +17,7 @@
 
         <Setter Property="ItemContainerStyle">
             <Setter.Value>
-                <Style TargetType="unoDesigner:DesignerItem">
+                <Style TargetType="unoDesigner:DesignerItem" BasedOn="{StaticResource DesignerItemDefaultStyle}">
                     <Setter Property="unoDesigner:SetterValueBindingHelper.PropertyBinding">
                         <Setter.Value>
                             <unoDesigner:SetterValueBindingHelper>
@@ -43,12 +43,13 @@
 
     </Style>
 
-    <Style TargetType="unoDesigner:DesignerItem">
+    <Style x:Key="DesignerItemDefaultStyle" TargetType="unoDesigner:DesignerItem">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="unoDesigner:DesignerItem">
                     <Border>
-                        <ContentPresenter x:Name="ContentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" IsHitTestVisible="False" />
+                        <ContentPresenter x:Name="ContentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}"
+                                          IsHitTestVisible="False" />
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
