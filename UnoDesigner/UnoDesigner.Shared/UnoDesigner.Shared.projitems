@@ -18,17 +18,23 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)DesignerItem.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)DesignerSurface.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\BitmapUtils.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\EmbeddedResourceToBitmapConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\ResourceUtils.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\TypeNameTemplateSelector.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Design\DesignerItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Design\DesignerSurface.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)MainViewModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Item.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)SetterValueBindingHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Shapes\Item.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Misc\SetterValueBindingHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Shapes\Picture.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Shapes\Rectangle.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="$(MSBuildThisFileDirectory)Styles.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)Design\Styles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -45,8 +51,14 @@
     <Content Include="$(MSBuildThisFileDirectory)Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\StoreLogo.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\Wide310x150Logo.scale-200.png" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Images\block.png" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Images\mario.png" />
   </ItemGroup>
   <ItemGroup>
     <PRIResource Include="$(MSBuildThisFileDirectory)Strings\en\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Misc\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Design\" />
   </ItemGroup>
 </Project>

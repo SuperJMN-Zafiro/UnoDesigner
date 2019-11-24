@@ -5,27 +5,36 @@
     xmlns:local="using:UnoDesigner"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:converters="using:UnoDesigner.Converters"
     mc:Ignorable="d">
+
+    <Page.Resources>
+        <converters:EmbeddedResourceToBitmapConverter x:Key="EmbeddedResourceToBitmapConverter" />
+        <converters:TypeNameTemplateSelector x:Key="TypeNameTemplateSelector">
+            <converters:TypeNameTemplateSelector.Items>
+               <ResourceDictionary>
+                   <DataTemplate x:Key="Rectangle">
+                       <Border Background="Red" />
+                   </DataTemplate>
+                   <DataTemplate x:Key="Picture" x:DataType="local:Picture">
+                       <Image Source="{Binding Source, Converter={StaticResource EmbeddedResourceToBitmapConverter}}" />
+                   </DataTemplate>
+                </ResourceDictionary>
+            </converters:TypeNameTemplateSelector.Items>
+        </converters:TypeNameTemplateSelector>
+    </Page.Resources>
 
     <Page.DataContext>
         <local:MainViewModel />
     </Page.DataContext>
 
-    <local:DesignerSurface 
-
-        ItemsSource="{Binding Items}" Background="Beige"
-        LeftBinding="{Binding Left}"
-        TopBinding="{Binding Top}"
-        WidthBinding="{Binding Width}"
-        HeightBinding="{Binding Height}">
-
-
-        <local:DesignerSurface.ItemTemplate>
-            <DataTemplate>
-                <Border Background="Red" />
-            </DataTemplate>
-        </local:DesignerSurface.ItemTemplate>
-
+    <local:DesignerSurface ItemsSource="{Binding Items}"
+                           Background="Beige"
+                           LeftBinding="{Binding Left}"
+                           TopBinding="{Binding Top}"
+                           WidthBinding="{Binding Width}"
+                           HeightBinding="{Binding Height}"
+                           ItemTemplateSelector="{StaticResource TypeNameTemplateSelector}">
     </local:DesignerSurface>
 
 </Page>

@@ -1,6 +1,6 @@
-﻿namespace UnoDesigner
+﻿namespace UnoDesigner.Shapes
 {
-    public class Item
+    public abstract class Item
     {
         public double Left { get; set; }
         public double Top { get; set; }

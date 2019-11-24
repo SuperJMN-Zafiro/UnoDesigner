@@ -1,7 +1,7 @@
 ﻿using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
-namespace UnoDesigner
+namespace UnoDesigner.Design
 {
     public partial class DesignerItem : ContentControl
     {
