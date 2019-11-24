@@ -7,57 +7,13 @@
 
   <Application.Resources>
 
-    <Style x:Key="DesignerSurfaceStyle" TargetType="local:DesignerSurface">
+        <ResourceDictionary>
 
-      <Setter Property="Template">
-        <Setter.Value>
-          <ControlTemplate TargetType="local:DesignerSurface">
-            <Border Background="White">
-              <ItemsPresenter />
-            </Border>
-          </ControlTemplate>
-        </Setter.Value>
-      </Setter>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
 
-      <Setter Property="ItemContainerStyle">
-        <Setter.Value>
-          <Style TargetType="local:DesignerItem" BasedOn="{StaticResource DesignerItemStyle}">
-            <Setter Property="local:SetterValueBindingHelper.PropertyBinding">
-              <Setter.Value>
-                <local:SetterValueBindingHelper>
-                  <local:SetterValueBindingHelper Type="Canvas" Property="Left"
-                                                     Binding="{Binding RelativeSource={RelativeSource Self}, Path=Left}" />
-                  <local:SetterValueBindingHelper Type="Canvas" Property="Top"
-                                                     Binding="{Binding RelativeSource={RelativeSource Self}, Path=Top}" />
-                </local:SetterValueBindingHelper>
-              </Setter.Value>
-            </Setter>
-          </Style>
-        </Setter.Value>
-
-      </Setter>
-
-      <Setter Property="ItemsPanel">
-        <Setter.Value>
-          <ItemsPanelTemplate>
-            <Canvas Background="Transparent" />
-          </ItemsPanelTemplate>
-        </Setter.Value>
-      </Setter>
-
-    </Style>
-
-    <Style x:Key="DesignerItemStyle" TargetType="local:DesignerItem">
-      <Setter Property="Template">
-        <Setter.Value>
-          <ControlTemplate TargetType="local:DesignerItem">
-            <Border>
-              <ContentPresenter x:Name="ContentPresenter" IsHitTestVisible="False" />
-            </Border>
-          </ControlTemplate>
-        </Setter.Value>
-      </Setter>
-    </Style>
+        </ResourceDictionary>
 
   </Application.Resources>
 

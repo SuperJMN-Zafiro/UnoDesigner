@@ -1,0 +1,58 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:unoDesigner="using:UnoDesigner">
+
+    <Style TargetType="unoDesigner:DesignerSurface">
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="unoDesigner:DesignerSurface">
+                    <Border Background="White">
+                        <ItemsPresenter />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Setter Property="ItemContainerStyle">
+            <Setter.Value>
+                <Style TargetType="unoDesigner:DesignerItem">
+                    <Setter Property="unoDesigner:SetterValueBindingHelper.PropertyBinding">
+                        <Setter.Value>
+                            <unoDesigner:SetterValueBindingHelper>
+                                <unoDesigner:SetterValueBindingHelper Type="Canvas" Property="Left"
+                                                                Binding="{Binding RelativeSource={RelativeSource Self}, Path=Left}" />
+                                <unoDesigner:SetterValueBindingHelper Type="Canvas" Property="Top"
+                                                                Binding="{Binding RelativeSource={RelativeSource Self}, Path=Top}" />
+                            </unoDesigner:SetterValueBindingHelper>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Setter.Value>
+
+        </Setter>
+
+        <Setter Property="ItemsPanel">
+            <Setter.Value>
+                <ItemsPanelTemplate>
+                    <Canvas Background="Transparent" />
+                </ItemsPanelTemplate>
+            </Setter.Value>
+        </Setter>
+
+    </Style>
+
+    <Style TargetType="unoDesigner:DesignerItem">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="unoDesigner:DesignerItem">
+                    <Border>
+                        <ContentPresenter x:Name="ContentPresenter" IsHitTestVisible="False" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

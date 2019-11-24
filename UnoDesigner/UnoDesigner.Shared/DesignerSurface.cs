@@ -21,10 +21,10 @@ namespace UnoDesigner
             return item is DesignerItem;
         }
 
-        public BindingBase LeftBinding { get; set; }
-        public BindingBase TopBinding { get; set; }
-        public BindingBase HeightBinding { get; set; }
-        public BindingBase WidthBinding { get; set; }
+        public Binding LeftBinding { get; set; }
+        public Binding TopBinding { get; set; }
+        public Binding HeightBinding { get; set; }
+        public Binding WidthBinding { get; set; }
 
         protected override void PrepareContainerForItemOverride(DependencyObject element, object item)
         {
