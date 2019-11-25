@@ -12,16 +12,36 @@ using UnoDesigner.Design;
 
 namespace UnoDesigner
 {
-    public partial class DesignerSurface : ItemsControl
+    public class DesignerSurface : ItemsControl
     {
+        public static readonly DependencyProperty SelectedItemsProperty = DependencyProperty.Register(
+            "SelectedItems", typeof(IEnumerable), typeof(DesignerSurface), new PropertyMetadata(default(IEnumerable)));
+
+
+        public bool IsMultiSelectionEnabled = false;
+        private CompositeDisposable subscriptions;
+
         public DesignerSurface()
         {
             DefaultStyleKey = typeof(DesignerSurface);
-            this.Unloaded += OnUnloaded;
+            Unloaded += OnUnloaded;
 
             Observable
                 .FromEventPattern<TappedEventHandler, TappedRoutedEventArgs>(h => Tapped += h, h => Tapped -= h)
                 .Subscribe(_ => ResetAll());
+        }
+
+        public Binding LeftBinding { get; set; }
+        public Binding TopBinding { get; set; }
+        public Binding HeightBinding { get; set; }
+        public Binding WidthBinding { get; set; }
+
+        private IEnumerable<DesignerItem> Containers => Items.Select(o => (DesignerItem) ContainerFromItem(o));
+
+        public IEnumerable SelectedItems
+        {
+            get => (IEnumerable) GetValue(SelectedItemsProperty);
+            set => SetValue(SelectedItemsProperty, value);
         }
 
         private void ResetAll()
@@ -29,7 +49,7 @@ namespace UnoDesigner
             ClearSelection();
             ClearEditMode();
         }
-        
+
         private void ClearEditMode()
         {
             foreach (var designerItem in Containers)
@@ -53,11 +73,6 @@ namespace UnoDesigner
             return item is DesignerItem;
         }
 
-        public Binding LeftBinding { get; set; }
-        public Binding TopBinding { get; set; }
-        public Binding HeightBinding { get; set; }
-        public Binding WidthBinding { get; set; }
-
         protected override void PrepareContainerForItemOverride(DependencyObject element, object item)
         {
             var di = (DesignerItem) element;
@@ -73,6 +88,7 @@ namespace UnoDesigner
                 {
                     ClearSelection();
                 }
+
                 di.IsSelected = true;
                 SelectedItems = GetSelectedItems();
             }));
@@ -88,7 +104,7 @@ namespace UnoDesigner
             {
                 foreach (var selectedItem in SelectedItems)
                 {
-                    var di = (DesignerItem)ContainerFromItem(selectedItem);
+                    var di = (DesignerItem) ContainerFromItem(selectedItem);
                     di.IsSelected = false;
                 }
             }
@@ -100,12 +116,6 @@ namespace UnoDesigner
         {
             return Containers.Where(x => x.IsSelected).Select(ItemFromContainer).ToList();
         }
-
-        private IEnumerable<DesignerItem> Containers => Items.Select(o => (DesignerItem)ContainerFromItem(o));
-
-
-        public bool IsMultiSelectionEnabled = false;
-        private CompositeDisposable subscriptions;
 
         private void SetBindings(DesignerItem di)
         {
@@ -128,15 +138,6 @@ namespace UnoDesigner
             {
                 di.SetBinding(HeightProperty, HeightBinding);
             }
-        }
-
-        public static readonly DependencyProperty SelectedItemsProperty = DependencyProperty.Register(
-            "SelectedItems", typeof(IEnumerable), typeof(DesignerSurface), new PropertyMetadata(default(IEnumerable)));
-
-        public IEnumerable SelectedItems
-        {
-            get { return (IEnumerable) GetValue(SelectedItemsProperty); }
-            set { SetValue(SelectedItemsProperty, value); }
         }
     }
 }
