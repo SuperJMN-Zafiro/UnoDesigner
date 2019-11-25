@@ -3,6 +3,7 @@ using System.Numerics;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
+using Windows.UI.Xaml.Input;
 
 namespace UnoDesigner.Design
 {
@@ -22,7 +23,12 @@ namespace UnoDesigner.Design
             {
                 thumb = value;
                 thumb.DragDelta += ThumbOnDragDelta;
+                thumb.Tapped += ThumbOnTapped;
             }
+        }
+
+        private void ThumbOnTapped(object sender, TappedRoutedEventArgs e)
+        {
         }
 
         public static readonly DependencyProperty AngleProperty = DependencyProperty.Register(
@@ -69,7 +75,14 @@ namespace UnoDesigner.Design
         protected override void OnApplyTemplate()
         {
             Thumb = (Thumb)GetTemplateChild("Thumb");
+            //var c = (Button)GetTemplateChild("Button");
+            //c.Click += COnClick;
             base.OnApplyTemplate();
+        }
+
+        private void COnClick(object sender, RoutedEventArgs e)
+        {
+            
         }
 
         public static readonly DependencyProperty HorizontalProperty = DependencyProperty.Register(
