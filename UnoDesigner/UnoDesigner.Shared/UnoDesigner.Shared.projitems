@@ -22,6 +22,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Converters\EmbeddedResourceToBitmapConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\ResourceUtils.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\TypeNameTemplateSelector.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Design\DeltaContentControl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Design\DesignerItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Design\DesignerSurface.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MainPage.xaml.cs">
@@ -59,6 +60,5 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Misc\" />
-    <Folder Include="$(MSBuildThisFileDirectory)Design\" />
   </ItemGroup>
 </Project>

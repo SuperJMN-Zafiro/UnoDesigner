@@ -1,5 +1,8 @@
-﻿using Windows.UI.Xaml;
+﻿using System.Reactive;
+using System.Reactive.Linq;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Input;
 
 namespace UnoDesigner.Design
 {
@@ -26,6 +29,15 @@ namespace UnoDesigner.Design
         {
             get { return (double) GetValue(TopProperty); }
             set { SetValue(TopProperty, value); }
+        }
+
+        public static readonly DependencyProperty AngleProperty = DependencyProperty.Register(
+            "Angle", typeof(double), typeof(DesignerItem), new PropertyMetadata(default(double)));
+
+        public double Angle
+        {
+            get { return (double) GetValue(AngleProperty); }
+            set { SetValue(AngleProperty, value); }
         }
     }
 }

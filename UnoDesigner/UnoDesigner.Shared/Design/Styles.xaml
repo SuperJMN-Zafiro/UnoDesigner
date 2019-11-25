@@ -54,11 +54,17 @@
             <Setter.Value>
                 <ControlTemplate TargetType="design:DesignerItem">
                     <Border>
-                        <ContentPresenter x:Name="ContentPresenter" 
-                                          xamarin:Content="{TemplateBinding Content}"
-                                          xamarin:ContentTemplate="{TemplateBinding ContentTemplate}"
-                                          xamarin:ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
-                                          IsHitTestVisible="False" />
+                        <Grid>
+                            <ContentPresenter x:Name="ContentPresenter"
+                                              xamarin:Content="{TemplateBinding Content}"
+                                              xamarin:ContentTemplate="{TemplateBinding ContentTemplate}"
+                                              xamarin:ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
+                                              IsHitTestVisible="False" />
+                            <design:DeltaContentControl x:Name="Mover"
+                                                        Angle="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Angle}"
+                                                        Horizontal="{Binding Path=Left, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
+                                                        Vertical="{Binding Path=Top, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" />
+                        </Grid>
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
@@ -66,5 +72,27 @@
     </Style>
 
     <Style TargetType="design:DesignerItem" BasedOn="{StaticResource DesignerItemDefaultStyle}" />
+
+    <Style TargetType="design:DeltaContentControl">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="design:DeltaContentControl">
+                    <Border
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}">
+                        <Grid>
+                            <Thumb x:Name="Thumb" Background="Transparent" />
+                            <ContentPresenter x:Name="ContentPresenter"
+                                              xamarin:Content="{TemplateBinding Content}"
+                                              xamarin:ContentTemplate="{TemplateBinding ContentTemplate}"
+                                              xamarin:ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
+                                              IsHitTestVisible="False" />
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 
 </ResourceDictionary>
