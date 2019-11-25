@@ -29,8 +29,7 @@ namespace UnoDesigner
             ClearSelection();
             ClearEditMode();
         }
-
-
+        
         private void ClearEditMode()
         {
             foreach (var designerItem in Containers)
@@ -70,7 +69,7 @@ namespace UnoDesigner
             subscriptions.Add(di.SelectionRequest.Subscribe(ea =>
             {
                 ea.EventArgs.Handled = true;
-                if (IsMultiSelectionEnabled)
+                if (!IsMultiSelectionEnabled)
                 {
                     ClearSelection();
                 }

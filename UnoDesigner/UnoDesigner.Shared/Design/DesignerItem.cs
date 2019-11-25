@@ -1,15 +1,18 @@
-﻿using System;
-using System.Reactive;
+﻿using System.Reactive;
+using System.Reactive.Disposables;
 using System.Reactive.Linq;
 using System.Reactive.Subjects;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
+using UnoDesigner.Misc;
 
 namespace UnoDesigner.Design
 {
     public partial class DesignerItem : ContentControl
     {
+        readonly CompositeDisposable disposables = new CompositeDisposable();
+
         public DesignerItem()
         {
             DefaultStyleKey = typeof(DesignerItem);
@@ -85,16 +88,17 @@ namespace UnoDesigner.Design
             var mover = (FrameworkElement)GetTemplateChild("Mover");
             if (mover != null)
             {
-                var tapped = Observable
-                    .FromEventPattern<TappedEventHandler, TappedRoutedEventArgs>(h => mover.Tapped += h, h => mover.Tapped -= h);
-
-                tapped.Subscribe(SelectionRequest);
+                Observable
+                    .FromEventPattern<TappedEventHandler, TappedRoutedEventArgs>(h => mover.Tapped += h, h => mover.Tapped -= h)
+                    .Subscribe(SelectionRequest)
+                    .DisposeWith(disposables);
 
                 Observable
                     .FromEventPattern<DoubleTappedEventHandler, DoubleTappedRoutedEventArgs>(h => mover.DoubleTapped += h,
                         h => mover.DoubleTapped -= h)
                     .Select(_ => Unit.Default)
-                    .Subscribe(EditRequest);
+                    .Subscribe(EditRequest)
+                    .DisposeWith(disposables);
             }
 
             base.OnApplyTemplate();
