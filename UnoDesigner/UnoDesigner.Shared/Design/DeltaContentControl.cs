@@ -75,14 +75,7 @@ namespace UnoDesigner.Design
         protected override void OnApplyTemplate()
         {
             Thumb = (Thumb)GetTemplateChild("Thumb");
-            //var c = (Button)GetTemplateChild("Button");
-            //c.Click += COnClick;
             base.OnApplyTemplate();
-        }
-
-        private void COnClick(object sender, RoutedEventArgs e)
-        {
-            
         }
 
         public static readonly DependencyProperty HorizontalProperty = DependencyProperty.Register(
