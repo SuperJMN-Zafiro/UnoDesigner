@@ -17,7 +17,7 @@
                        <Border Background="Red" />
                    </DataTemplate>
                    <DataTemplate x:Key="Picture" x:DataType="local:Picture">
-                       <Image Source="{Binding Source}" />
+                       <Image Stretch="Fill" Source="{Binding Source}" />
                    </DataTemplate>
                 </ResourceDictionary>
             </converters:TypeNameTemplateSelector.Items>
