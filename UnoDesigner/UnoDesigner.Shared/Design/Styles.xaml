@@ -9,8 +9,12 @@
     mc:Ignorable="d xamarin"
     xmlns:misc="using:UnoDesigner.Misc">
 
+    <Brush x:Key="DesignerBrush">Transparent</Brush>
+    <Brush x:Key="DesignerBorderBrush">#D100F9FF</Brush>
+
     <Style TargetType="unoDesigner:DesignerSurface">
 
+        <Setter Property="Background" Value="Transparent"></Setter>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="unoDesigner:DesignerSurface">
@@ -54,17 +58,60 @@
             <Setter.Value>
                 <ControlTemplate TargetType="design:DesignerItem">
                     <Border>
+
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="Selection">
+                                <VisualState x:Name="Selected">
+                                    <VisualState.Setters>
+                                        <Setter Target="Resizers.Visibility" Value="Visible" />
+                                        <Setter Target="Border.Visibility" Value="Visible" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                                <VisualState x:Name="Unselected">
+                                    <VisualState.Setters>
+                                        <Setter Target="Resizers.Visibility" Value="Collapsed" />
+                                        <Setter Target="Border.Visibility" Value="Collapsed" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                            </VisualStateGroup>
+
+                            <VisualStateGroup x:Name="Edition">
+                                <VisualState x:Name="Default">
+                                    <VisualState.Setters>
+                                        <Setter Target="ContentPresenter.IsHitTestVisible" Value="False" />
+                                        <Setter Target="Mover.IsHitTestVisible" Value="True" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                                <VisualState x:Name="Editing">
+                                    <VisualState.Setters>
+                                        <Setter Target="ContentPresenter.IsHitTestVisible" Value="True" />
+                                        <Setter Target="Mover.IsHitTestVisible" Value="False" />
+                                        <Setter Target="Resizers.Visibility" Value="Collapsed" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                            </VisualStateGroup>
+
+                        </VisualStateManager.VisualStateGroups>
+
                         <Grid>
                             <ContentPresenter x:Name="ContentPresenter"
                                               xamarin:Content="{TemplateBinding Content}"
                                               xamarin:ContentTemplate="{TemplateBinding ContentTemplate}"
                                               xamarin:ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
                                               IsHitTestVisible="False" />
+
                             <design:DeltaContentControl x:Name="Mover"
                                                         Angle="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Angle}"
                                                         Horizontal="{Binding Path=Left, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
-                                                        Vertical="{Binding Path=Top, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" />
-                            <design:DeltaContentControl
+                                                        Vertical="{Binding Path=Top, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}">
+                            </design:DeltaContentControl>
+
+                            <Border x:Name="Border"
+                                    BorderBrush="{StaticResource DesignerBorderBrush}" BorderThickness="1"
+                                    Background="{StaticResource DesignerBrush}" Width="{TemplateBinding Width}"
+                                    Height="{TemplateBinding Height}" IsHitTestVisible="False" />
+
+                            <design:DeltaContentControl x:Name="Resizers"
                                 DataContext="{Binding RelativeSource={RelativeSource TemplatedParent}}"
                                 Style="{StaticResource DeltaContentControlResizerStyle}"
                                 HorizontalAlignment="Right"
@@ -72,6 +119,7 @@
                                 Horizontal="{Binding Width, Mode=TwoWay}"
                                 Vertical="{Binding Height, Mode=TwoWay}">
                             </design:DeltaContentControl>
+
                         </Grid>
                     </Border>
                 </ControlTemplate>
@@ -89,6 +137,7 @@
                         BorderThickness="{TemplateBinding BorderThickness}">
                         <Grid>
                             <Thumb x:Name="Thumb" Background="Transparent" />
+
                             <ContentPresenter x:Name="ContentPresenter"
                                               xamarin:Content="{TemplateBinding Content}"
                                               xamarin:ContentTemplate="{TemplateBinding ContentTemplate}"
