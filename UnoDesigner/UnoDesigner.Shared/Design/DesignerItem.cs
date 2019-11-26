@@ -1,4 +1,5 @@
-﻿using System.Reactive;
+﻿using System;
+using System.Reactive;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;
 using System.Reactive.Subjects;
@@ -9,62 +10,82 @@ using UnoDesigner.Misc;
 
 namespace UnoDesigner.Design
 {
-    public partial class DesignerItem : ContentControl
+    public class DesignerItem : ContentControl
     {
-        readonly CompositeDisposable disposables = new CompositeDisposable();
+        public static readonly DependencyProperty LeftProperty = DependencyProperty.Register(
+            "Left", typeof(double), typeof(DesignerItem), new PropertyMetadata(default(double)));
+
+        public static readonly DependencyProperty TopProperty = DependencyProperty.Register(
+            "Top", typeof(double), typeof(DesignerItem), new PropertyMetadata(default(double)));
+
+        public static readonly DependencyProperty AngleProperty = DependencyProperty.Register(
+            "Angle", typeof(double), typeof(DesignerItem), new PropertyMetadata(default(double)));
+
+        public static readonly DependencyProperty IsSelectedProperty = DependencyProperty.Register(
+            "IsSelected", typeof(bool), typeof(DesignerItem), new PropertyMetadata(default(bool), IsSelectedChanged));
+
+        public static readonly DependencyProperty IsEditingProperty = DependencyProperty.Register(
+            "IsEditing", typeof(bool), typeof(DesignerItem), new PropertyMetadata(default(bool), IsEditingChanged));
+
+        private readonly CompositeDisposable disposables = new CompositeDisposable();
 
         public DesignerItem()
         {
             DefaultStyleKey = typeof(DesignerItem);
 
-            Loaded += OnLoaded;
-            Unloaded += OnUnloaded;
-        }
+            Observable
+                .FromEventPattern<RoutedEventHandler, RoutedEventArgs>(h => Loaded += h, h => Loaded -= h)
+                .Subscribe(x =>
+                {
+                    SetSelectionState(false);
+                    SetEditState(false);
+                }).DisposeWith(disposables);
 
-        private void OnLoaded(object sender, RoutedEventArgs routedEventArgs)
-        {
-            SetSelectionState(false);
-            SetEditState(false);
+            Observable
+                .FromEventPattern<RoutedEventHandler, RoutedEventArgs>(h => Unloaded += h, h => Unloaded -= h)
+                .Subscribe(x => { disposables.Dispose(); }).DisposeWith(disposables);
         }
-
-        private void OnUnloaded(object sender, RoutedEventArgs e)
-        {
-        }
-
-        public static readonly DependencyProperty LeftProperty = DependencyProperty.Register(
-            "Left", typeof(double), typeof(DesignerItem), new PropertyMetadata(default(double)));
 
         public double Left
         {
-            get { return (double)GetValue(LeftProperty); }
-            set { SetValue(LeftProperty, value); }
+            get => (double) GetValue(LeftProperty);
+            set => SetValue(LeftProperty, value);
         }
-
-        public static readonly DependencyProperty TopProperty = DependencyProperty.Register(
-            "Top", typeof(double), typeof(DesignerItem), new PropertyMetadata(default(double)));
 
         public double Top
         {
-            get { return (double)GetValue(TopProperty); }
-            set { SetValue(TopProperty, value); }
+            get => (double) GetValue(TopProperty);
+            set => SetValue(TopProperty, value);
         }
-
-        public static readonly DependencyProperty AngleProperty = DependencyProperty.Register(
-            "Angle", typeof(double), typeof(DesignerItem), new PropertyMetadata(default(double)));
 
         public double Angle
         {
-            get { return (double)GetValue(AngleProperty); }
-            set { SetValue(AngleProperty, value); }
+            get => (double) GetValue(AngleProperty);
+            set => SetValue(AngleProperty, value);
         }
 
-        public static readonly DependencyProperty IsSelectedProperty = DependencyProperty.Register(
-            "IsSelected", typeof(bool), typeof(DesignerItem), new PropertyMetadata(default(bool), IsSelectedChanged));
-
-        private static void IsSelectedChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs changedArgs)
+        public bool IsSelected
         {
-            var d = (DesignerItem)dependencyObject;
-            d.OnSelected((bool)changedArgs.OldValue, (bool)changedArgs.NewValue);
+            get => (bool) GetValue(IsSelectedProperty);
+            set => SetValue(IsSelectedProperty, value);
+        }
+
+        public bool IsEditing
+        {
+            get => (bool) GetValue(IsEditingProperty);
+            set => SetValue(IsEditingProperty, value);
+        }
+
+        public ISubject<EventPattern<TappedRoutedEventArgs>> SelectionRequest { get; } =
+            new Subject<EventPattern<TappedRoutedEventArgs>>();
+
+        public ISubject<Unit> EditRequest { get; } = new Subject<Unit>();
+
+        private static void IsSelectedChanged(DependencyObject dependencyObject,
+            DependencyPropertyChangedEventArgs changedArgs)
+        {
+            var d = (DesignerItem) dependencyObject;
+            d.OnSelected((bool) changedArgs.OldValue, (bool) changedArgs.NewValue);
         }
 
         private void OnSelected(bool oldValue, bool newValue)
@@ -77,24 +98,20 @@ namespace UnoDesigner.Design
             VisualStateManager.GoToState(this, newValue ? "Selected" : "Unselected", true);
         }
 
-        public bool IsSelected
-        {
-            get { return (bool)GetValue(IsSelectedProperty); }
-            set { SetValue(IsSelectedProperty, value); }
-        }
-
         protected override void OnApplyTemplate()
         {
-            var mover = (FrameworkElement)GetTemplateChild("Mover");
+            var mover = (FrameworkElement) GetTemplateChild("Mover");
             if (mover != null)
             {
                 Observable
-                    .FromEventPattern<TappedEventHandler, TappedRoutedEventArgs>(h => mover.Tapped += h, h => mover.Tapped -= h)
+                    .FromEventPattern<TappedEventHandler, TappedRoutedEventArgs>(h => mover.Tapped += h,
+                        h => mover.Tapped -= h)
                     .Subscribe(SelectionRequest)
                     .DisposeWith(disposables);
 
                 Observable
-                    .FromEventPattern<DoubleTappedEventHandler, DoubleTappedRoutedEventArgs>(h => mover.DoubleTapped += h,
+                    .FromEventPattern<DoubleTappedEventHandler, DoubleTappedRoutedEventArgs>(
+                        h => mover.DoubleTapped += h,
                         h => mover.DoubleTapped -= h)
                     .Select(_ => Unit.Default)
                     .Subscribe(EditRequest)
@@ -104,13 +121,11 @@ namespace UnoDesigner.Design
             base.OnApplyTemplate();
         }
 
-        public static readonly DependencyProperty IsEditingProperty = DependencyProperty.Register(
-            "IsEditing", typeof(bool), typeof(DesignerItem), new PropertyMetadata(default(bool), IsEditingChanged));
-
-        private static void IsEditingChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
+        private static void IsEditingChanged(DependencyObject dependencyObject,
+            DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
         {
-            var target = (DesignerItem)dependencyObject;
-            var newValue = (bool)dependencyPropertyChangedEventArgs.NewValue;
+            var target = (DesignerItem) dependencyObject;
+            var newValue = (bool) dependencyPropertyChangedEventArgs.NewValue;
             target.IsEditingChanged(newValue);
         }
 
@@ -134,14 +149,5 @@ namespace UnoDesigner.Design
         {
             VisualStateManager.GoToState(this, newValue ? "Editing" : "Default", true);
         }
-
-        public bool IsEditing
-        {
-            get { return (bool)GetValue(IsEditingProperty); }
-            set { SetValue(IsEditingProperty, value); }
-        }
-
-        public ISubject<EventPattern<TappedRoutedEventArgs>> SelectionRequest { get; } = new Subject<EventPattern<TappedRoutedEventArgs>>();
-        public ISubject<Unit> EditRequest { get; } = new Subject<Unit>();
     }
 }

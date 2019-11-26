@@ -2,12 +2,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reactive.Disposables;
 using System.Reactive.Linq;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
+using Uno.Disposables;
 using UnoDesigner.Design;
 
 namespace UnoDesigner
@@ -16,18 +16,24 @@ namespace UnoDesigner
     {
         public static readonly DependencyProperty SelectedItemsProperty = DependencyProperty.Register(
             "SelectedItems", typeof(IEnumerable), typeof(DesignerSurface), new PropertyMetadata(default(IEnumerable)));
-        
+
+        private readonly CompositeDisposable disposables = new CompositeDisposable();
+
         public bool IsMultiSelectionEnabled = false;
-        private CompositeDisposable subscriptions;
 
         public DesignerSurface()
         {
             DefaultStyleKey = typeof(DesignerSurface);
-            Unloaded += OnUnloaded;
+
+            Observable
+                .FromEventPattern<RoutedEventHandler, RoutedEventArgs>(h => Unloaded += h, h => Unloaded -= h)
+                .Subscribe(_ => disposables.Dispose())
+                .DisposeWith(disposables);
 
             Observable
                 .FromEventPattern<TappedEventHandler, TappedRoutedEventArgs>(h => Tapped += h, h => Tapped -= h)
-                .Subscribe(_ => ResetAll());
+                .Subscribe(_ => ResetAll())
+                .DisposeWith(disposables);
         }
 
         public Binding LeftBinding { get; set; }
@@ -57,11 +63,6 @@ namespace UnoDesigner
             }
         }
 
-        private void OnUnloaded(object sender, RoutedEventArgs e)
-        {
-            subscriptions.Dispose();
-        }
-
         protected override DependencyObject GetContainerForItemOverride()
         {
             return new DesignerItem();
@@ -78,23 +79,27 @@ namespace UnoDesigner
 
             SetBindings(di);
 
-            subscriptions = new CompositeDisposable();
+            di.SelectionRequest
+                .Subscribe(ea => { OnSelectionRequest(di, ea.EventArgs); })
+                .DisposeWith(disposables);
 
-            subscriptions.Add(di.SelectionRequest.Subscribe(ea =>
-            {
-                ea.EventArgs.Handled = true;
-                if (!IsMultiSelectionEnabled)
-                {
-                    ClearSelection();
-                }
-
-                di.IsSelected = true;
-                SelectedItems = GetSelectedItems();
-            }));
-
-            subscriptions.Add(di.EditRequest.Subscribe(_ => di.IsEditing = true));
+            di.EditRequest
+                .Subscribe(_ => di.IsEditing = true)
+                .DisposeWith(disposables);
 
             base.PrepareContainerForItemOverride(element, item);
+        }
+
+        private void OnSelectionRequest(DesignerItem di, TappedRoutedEventArgs tappedRoutedEventArgs)
+        {
+            tappedRoutedEventArgs.Handled = true;
+            if (!IsMultiSelectionEnabled)
+            {
+                ClearSelection();
+            }
+
+            di.IsSelected = true;
+            SelectedItems = GetSelectedItems();
         }
 
         private void ClearSelection()
