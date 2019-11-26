@@ -7,7 +7,7 @@ using Windows.UI.Xaml.Input;
 
 namespace UnoDesigner.Design
 {
-    public class DeltaContentControl : ContentControl
+    public partial class DeltaContentControl : ContentControl
     {
         public static readonly DependencyProperty AngleProperty = DependencyProperty.Register(
             "Angle", typeof(double), typeof(DeltaContentControl), new PropertyMetadata(default(double)));

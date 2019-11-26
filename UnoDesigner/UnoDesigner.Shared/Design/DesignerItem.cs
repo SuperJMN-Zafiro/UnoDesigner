@@ -10,7 +10,7 @@ using UnoDesigner.Misc;
 
 namespace UnoDesigner.Design
 {
-    public class DesignerItem : ContentControl
+    public partial class DesignerItem : ContentControl
     {
         public static readonly DependencyProperty LeftProperty = DependencyProperty.Register(
             "Left", typeof(double), typeof(DesignerItem), new PropertyMetadata(default(double)));

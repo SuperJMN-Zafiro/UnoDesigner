@@ -12,7 +12,7 @@ using UnoDesigner.Design;
 
 namespace UnoDesigner
 {
-    public class DesignerSurface : ItemsControl
+    public partial class DesignerSurface : ItemsControl
     {
         public static readonly DependencyProperty SelectedItemsProperty = DependencyProperty.Register(
             "SelectedItems", typeof(IEnumerable), typeof(DesignerSurface), new PropertyMetadata(default(IEnumerable)));
