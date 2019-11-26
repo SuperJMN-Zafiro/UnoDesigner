@@ -8,9 +8,8 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Uno.Disposables;
-using UnoDesigner.Design;
 
-namespace UnoDesigner
+namespace UnoDesigner.Design
 {
     public partial class DesignerSurface : ItemsControl
     {

@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:converters="using:UnoDesigner.Converters"
+    xmlns:design="using:UnoDesigner.Design"
     mc:Ignorable="d">
 
     <Page.Resources>
@@ -28,13 +29,13 @@
         <local:MainViewModel />
     </Page.DataContext>
 
-    <local:DesignerSurface ItemsSource="{Binding Items}"
+    <design:DesignerSurface ItemsSource="{Binding Items}"
                            Background="Beige"
                            LeftBinding="{Binding Left}"
                            TopBinding="{Binding Top}"
                            WidthBinding="{Binding Width}"
                            HeightBinding="{Binding Height}"
                            ItemTemplateSelector="{StaticResource TypeNameTemplateSelector}">
-    </local:DesignerSurface>
+    </design:DesignerSurface>
 
 </Page>
