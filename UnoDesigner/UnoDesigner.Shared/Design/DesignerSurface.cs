@@ -16,8 +16,7 @@ namespace UnoDesigner
     {
         public static readonly DependencyProperty SelectedItemsProperty = DependencyProperty.Register(
             "SelectedItems", typeof(IEnumerable), typeof(DesignerSurface), new PropertyMetadata(default(IEnumerable)));
-
-
+        
         public bool IsMultiSelectionEnabled = false;
         private CompositeDisposable subscriptions;
 
