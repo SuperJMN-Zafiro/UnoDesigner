@@ -1,0 +1,3 @@
+[submodule "ZafiroDesigner.Core"]
+	path = ZafiroDesigner.Core
+	url = https://github.com/SuperJMN-Zafiro/ZafiroDesigner.Core.git
