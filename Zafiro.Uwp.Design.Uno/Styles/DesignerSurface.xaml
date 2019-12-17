@@ -27,24 +27,6 @@
             </Setter.Value>
         </Setter>
 
-        <Setter Property="ItemContainerStyle">
-            <Setter.Value>
-                <Style TargetType="uno:DesignerItem" BasedOn="{StaticResource DesignerItemDefaultStyle}">
-                    <Setter Property="uno:SetterValueBindingHelper.PropertyBinding">
-                        <Setter.Value>
-                            <uno:SetterValueBindingHelper>
-                                <uno:SetterValueBindingHelper Type="Canvas" Property="Left"
-                                                                Binding="{Binding RelativeSource={RelativeSource Self}, Path=Left}" />
-                                <uno:SetterValueBindingHelper Type="Canvas" Property="Top"
-                                                                Binding="{Binding RelativeSource={RelativeSource Self}, Path=Top}" />
-                            </uno:SetterValueBindingHelper>
-                        </Setter.Value>
-                    </Setter>
-                </Style>
-            </Setter.Value>
-
-        </Setter>
-
         <Setter Property="ItemsPanel">
             <Setter.Value>
                 <ItemsPanelTemplate>

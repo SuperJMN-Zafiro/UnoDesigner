@@ -3,6 +3,7 @@ using System.Reactive;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;
 using System.Reactive.Subjects;
+using Windows.Foundation;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
@@ -148,5 +149,7 @@ namespace Zafiro.Uwp.Design.Uno
         {
             VisualStateManager.GoToState(this, newValue ? "Editing" : "Default", true);
         }
+
+        public Rect Bounds => new Rect(Left, Top, ActualWidth, ActualHeight);
     }
 }
