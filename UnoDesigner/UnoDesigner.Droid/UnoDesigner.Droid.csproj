@@ -64,6 +64,9 @@
     <PackageReference Include="System.Reactive">
       <Version>4.3.1</Version>
     </PackageReference>
+    <PackageReference Include="Uno.Microsoft.Toolkit.Uwp.UI.Controls">
+      <Version>5.1.0-build.200.gf9c311b069</Version>
+    </PackageReference>
     <PackageReference Include="Uno.UI" Version="2.1.0-dev.289" />
     <PackageReference Include="Uno.UniversalImageLoader" Version="1.9.32" />
     <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="1.1.1" />
@@ -90,6 +93,12 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Styles.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Zafiro.Uwp.Design.Uno\Zafiro.Uwp.Design.Uno.csproj">
+      <Project>{87ba0b8c-4440-4fc7-929e-84da996e6f56}</Project>
+      <Name>Zafiro.Uwp.Design.Uno</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="..\UnoDesigner.Shared\UnoDesigner.Shared.projitems" Label="Shared" Condition="Exists('..\UnoDesigner.Shared\UnoDesigner.Shared.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

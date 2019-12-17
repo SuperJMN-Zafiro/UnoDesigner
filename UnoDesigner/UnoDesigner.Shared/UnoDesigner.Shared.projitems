@@ -22,23 +22,15 @@
     <Compile Include="$(MSBuildThisFileDirectory)Converters\EmbeddedResourceToBitmapConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\ResourceUtils.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\TypeNameTemplateSelector.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Design\DeltaContentControl.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Design\DesignerItem.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Design\DesignerSurface.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)MainViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Shapes\Item.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Misc\SetterValueBindingHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Shapes\Picture.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Shapes\Rectangle.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="$(MSBuildThisFileDirectory)Design\Styles.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="$(MSBuildThisFileDirectory)MainPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -57,8 +49,5 @@
   </ItemGroup>
   <ItemGroup>
     <PRIResource Include="$(MSBuildThisFileDirectory)Strings\en\Resources.resw" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="$(MSBuildThisFileDirectory)Misc\" />
   </ItemGroup>
 </Project>
