@@ -77,7 +77,8 @@ namespace Zafiro.Uwp.Design.Uno
         public Binding WidthBinding { get; set; }
         public Binding AngleBinding { get; set; }
 
-        private IEnumerable<DesignerItem> Containers => Items.Select(o => (DesignerItem)ContainerFromItem(o));
+        private IEnumerable<DesignerItem> Containers => RealItems.Select(o => (DesignerItem) ContainerFromItem(o));
+        public IEnumerable<object> RealItems => Items.Any() ? Items : (IEnumerable<object>)ItemsSource;
 
         public IEnumerable SelectedItems
         {
