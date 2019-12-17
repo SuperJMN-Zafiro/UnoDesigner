@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Reactive.Disposables;
 
-namespace UnoDesigner.Misc
+namespace Zafiro.Uwp.Design.Uno
 {
     public static class DisposableMixin
     {

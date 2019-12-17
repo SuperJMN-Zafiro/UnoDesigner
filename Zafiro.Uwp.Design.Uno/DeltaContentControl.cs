@@ -5,7 +5,7 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Input;
 
-namespace UnoDesigner.Design
+namespace Zafiro.Uwp.Design.Uno
 {
     public partial class DeltaContentControl : ContentControl
     {

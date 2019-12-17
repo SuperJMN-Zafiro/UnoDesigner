@@ -2,14 +2,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reactive.Disposables;
 using System.Reactive.Linq;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
-using Uno.Disposables;
 
-namespace UnoDesigner.Design
+namespace Zafiro.Uwp.Design.Uno
 {
     public partial class DesignerSurface : ItemsControl
     {

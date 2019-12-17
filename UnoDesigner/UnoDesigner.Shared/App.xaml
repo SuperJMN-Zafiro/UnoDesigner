@@ -10,7 +10,7 @@
         <ResourceDictionary>
 
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Design/Styles.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="ms-appx:///Zafiro.Uwp.Design.Uno/Styles.xaml"></ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
 
         </ResourceDictionary>

@@ -2,21 +2,20 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
     xmlns:xamarin="http://uno.ui/xamarin" 
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:design="using:UnoDesigner.Design"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d xamarin"
-    xmlns:misc="using:UnoDesigner.Misc">
+    xmlns:uno="using:Zafiro.Uwp.Design.Uno"
+    mc:Ignorable="d xamarin">
 
     <Brush x:Key="DesignerBrush">Transparent</Brush>
     <Brush x:Key="DesignerBorderBrush">#D100F9FF</Brush>
 
-    <Style TargetType="design:DesignerSurface">
+    <Style TargetType="uno:DesignerSurface">
 
         <Setter Property="Background" Value="Transparent"></Setter>
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="design:DesignerSurface">
+                <ControlTemplate TargetType="uno:DesignerSurface">
                     <Border Background="White">
                         <ItemsPresenter />
                     </Border>
@@ -26,15 +25,15 @@
 
         <Setter Property="ItemContainerStyle">
             <Setter.Value>
-                <Style TargetType="design:DesignerItem" BasedOn="{StaticResource DesignerItemDefaultStyle}">
-                    <Setter Property="misc:SetterValueBindingHelper.PropertyBinding">
+                <Style TargetType="uno:DesignerItem" BasedOn="{StaticResource DesignerItemDefaultStyle}">
+                    <Setter Property="uno:SetterValueBindingHelper.PropertyBinding">
                         <Setter.Value>
-                            <misc:SetterValueBindingHelper>
-                                <misc:SetterValueBindingHelper Type="Canvas" Property="Left"
+                            <uno:SetterValueBindingHelper>
+                                <uno:SetterValueBindingHelper Type="Canvas" Property="Left"
                                                                 Binding="{Binding RelativeSource={RelativeSource Self}, Path=Left}" />
-                                <misc:SetterValueBindingHelper Type="Canvas" Property="Top"
+                                <uno:SetterValueBindingHelper Type="Canvas" Property="Top"
                                                                 Binding="{Binding RelativeSource={RelativeSource Self}, Path=Top}" />
-                            </misc:SetterValueBindingHelper>
+                            </uno:SetterValueBindingHelper>
                         </Setter.Value>
                     </Setter>
                 </Style>
@@ -52,10 +51,10 @@
 
     </Style>
 
-    <Style x:Key="DesignerItemDefaultStyle" TargetType="design:DesignerItem">
+    <Style x:Key="DesignerItemDefaultStyle" TargetType="uno:DesignerItem">
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="design:DesignerItem">
+                <ControlTemplate TargetType="uno:DesignerItem">
                     <Border>
 
                         <VisualStateManager.VisualStateGroups>
@@ -99,25 +98,25 @@
                                               xamarin:ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
                                               IsHitTestVisible="False" />
 
-                            <design:DeltaContentControl x:Name="Mover"
+                            <uno:DeltaContentControl x:Name="Mover"
                                                         Angle="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Angle}"
                                                         Horizontal="{Binding Path=Left, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
                                                         Vertical="{Binding Path=Top, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}">
-                            </design:DeltaContentControl>
+                            </uno:DeltaContentControl>
 
                             <Border x:Name="Border"
                                     BorderBrush="{StaticResource DesignerBorderBrush}" BorderThickness="1"
                                     Background="{StaticResource DesignerBrush}" Width="{TemplateBinding Width}"
                                     Height="{TemplateBinding Height}" IsHitTestVisible="False" />
 
-                            <design:DeltaContentControl x:Name="Resizers"
+                            <uno:DeltaContentControl x:Name="Resizers"
                                 DataContext="{Binding RelativeSource={RelativeSource TemplatedParent}}"
                                 Style="{StaticResource DeltaContentControlResizerStyle}"
                                 HorizontalAlignment="Right"
                                 VerticalAlignment="Bottom"
                                 Horizontal="{Binding Width, Mode=TwoWay}"
                                 Vertical="{Binding Height, Mode=TwoWay}">
-                            </design:DeltaContentControl>
+                            </uno:DeltaContentControl>
 
                         </Grid>
                     </Border>
@@ -126,10 +125,10 @@
         </Setter>
     </Style>
 
-    <Style TargetType="design:DeltaContentControl" x:Key="DeltaContentControlDefaultStyle">
+    <Style TargetType="uno:DeltaContentControl" x:Key="DeltaContentControlDefaultStyle">
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="design:DeltaContentControl">
+                <ControlTemplate TargetType="uno:DeltaContentControl">
                     <Border
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
@@ -150,7 +149,7 @@
     </Style>
 
     <Style x:Key="DeltaContentControlResizerStyle"
-           TargetType="design:DeltaContentControl" BasedOn="{StaticResource DeltaContentControlDefaultStyle}">
+           TargetType="uno:DeltaContentControl" BasedOn="{StaticResource DeltaContentControlDefaultStyle}">
         <Setter Property="Width" Value="14" />
         <Setter Property="Height" Value="14" />
         <Setter Property="ContentTemplate">
@@ -163,7 +162,7 @@
         </Setter>
     </Style>
 
-    <Style TargetType="design:DesignerItem" BasedOn="{StaticResource DesignerItemDefaultStyle}" />
-    <Style TargetType="design:DeltaContentControl" BasedOn="{StaticResource DeltaContentControlDefaultStyle}" />
+    <Style TargetType="uno:DesignerItem" BasedOn="{StaticResource DesignerItemDefaultStyle}" />
+    <Style TargetType="uno:DeltaContentControl" BasedOn="{StaticResource DeltaContentControlDefaultStyle}" />
 
 </ResourceDictionary>

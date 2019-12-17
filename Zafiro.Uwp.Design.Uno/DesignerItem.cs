@@ -6,9 +6,8 @@ using System.Reactive.Subjects;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
-using UnoDesigner.Misc;
 
-namespace UnoDesigner.Design
+namespace Zafiro.Uwp.Design.Uno
 {
     public partial class DesignerItem : ContentControl
     {

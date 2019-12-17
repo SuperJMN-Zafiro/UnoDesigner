@@ -39,5 +39,8 @@
     <PackageReference Include="Uno.Wasm.Bootstrap" Version="1.0.10" />
     <DotNetCliToolReference Include="Uno.Wasm.Bootstrap.Cli" Version="1.0.0-dev.244" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Zafiro.Uwp.Design.Uno\Zafiro.Uwp.Design.Uno.csproj" />
+  </ItemGroup>
   <Import Project="..\UnoDesigner.Shared\UnoDesigner.Shared.projitems" Label="Shared" Condition="Exists('..\UnoDesigner.Shared\UnoDesigner.Shared.projitems')" />
 </Project>
