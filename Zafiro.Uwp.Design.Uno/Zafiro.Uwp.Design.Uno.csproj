@@ -21,6 +21,16 @@
     <UpToDateCheckInput Include="**\*.xaml" Exclude="bin\**\*.xaml;obj\**\*.xaml" />
   </ItemGroup>
   <ItemGroup>
+    <None Remove="DesignerSurface.xaml" />
+    <None Remove="Styles\DeltaContentControl.xaml" />
+    <None Remove="Styles\DesignerItem.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <UpToDateCheckInput Remove="DesignerSurface.xaml" />
+    <UpToDateCheckInput Remove="Styles\DeltaContentControl.xaml" />
+    <UpToDateCheckInput Remove="Styles\DesignerItem.xaml" />
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="System.Reactive" Version="4.3.1" />
   </ItemGroup>
 </Project>

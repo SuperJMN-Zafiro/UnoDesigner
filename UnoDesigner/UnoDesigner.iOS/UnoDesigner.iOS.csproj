@@ -151,7 +151,12 @@
       <Visible>false</Visible>
     </ImageAsset>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\..\Zafiro.Uwp.Design.Uno\Zafiro.Uwp.Design.Uno.csproj">
+      <Project>{87ba0b8c-4440-4fc7-929e-84da996e6f56}</Project>
+      <Name>Zafiro.Uwp.Design.Uno</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="..\UnoDesigner.Shared\UnoDesigner.Shared.projitems" Label="Shared" Condition="Exists('..\UnoDesigner.Shared\UnoDesigner.Shared.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

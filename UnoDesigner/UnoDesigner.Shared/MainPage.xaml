@@ -7,19 +7,20 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:converters="using:UnoDesigner.Converters"
     xmlns:design="using:Zafiro.Uwp.Design.Uno"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     mc:Ignorable="d">
 
     <Page.Resources>
         <converters:EmbeddedResourceToBitmapConverter x:Key="EmbeddedResourceToBitmapConverter" />
         <converters:TypeNameTemplateSelector x:Key="TypeNameTemplateSelector">
             <converters:TypeNameTemplateSelector.Items>
-               <ResourceDictionary>
-                   <DataTemplate x:Key="Rectangle">
-                       <Border Background="Red" />
-                   </DataTemplate>
-                   <DataTemplate x:Key="Picture" x:DataType="local:Picture">
-                       <Image Stretch="Fill" Source="{Binding Source}" />
-                   </DataTemplate>
+                <ResourceDictionary>
+                    <DataTemplate x:Key="Rectangle">
+                        <Border Background="Red" />
+                    </DataTemplate>
+                    <DataTemplate x:Key="Picture" x:DataType="local:Picture">
+                        <Image Stretch="Fill" Source="{Binding Source}" />
+                    </DataTemplate>
                 </ResourceDictionary>
             </converters:TypeNameTemplateSelector.Items>
         </converters:TypeNameTemplateSelector>
@@ -29,13 +30,19 @@
         <local:MainViewModel />
     </Page.DataContext>
 
-    <design:DesignerSurface ItemsSource="{Binding Items}"
-                           Background="Beige"
-                           LeftBinding="{Binding Left}"
-                           TopBinding="{Binding Top}"
-                           WidthBinding="{Binding Width}"
-                           HeightBinding="{Binding Height}"
-                           ItemTemplateSelector="{StaticResource TypeNameTemplateSelector}">
-    </design:DesignerSurface>
-
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        
+        <design:DesignerSurface Grid.Row="1" ItemsSource="{Binding Items}"
+                                Background="Beige"
+                                LeftBinding="{Binding Left}"
+                                TopBinding="{Binding Top}"
+                                WidthBinding="{Binding Width}"
+                                HeightBinding="{Binding Height}"
+                                ItemTemplateSelector="{StaticResource TypeNameTemplateSelector}">
+        </design:DesignerSurface>
+    </Grid>
 </Page>
