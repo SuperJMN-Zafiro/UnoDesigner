@@ -13,6 +13,8 @@
                 <ResourceDictionary Source="ms-appx:///Zafiro.Uwp.Design.Uno/Styles/Styles.xaml"></ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
 
+            <local:Composition x:Key="Composition" />
+
         </ResourceDictionary>
 
   </Application.Resources>

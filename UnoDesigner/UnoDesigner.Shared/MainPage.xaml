@@ -5,44 +5,12 @@
     xmlns:local="using:UnoDesigner"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
     xmlns:converters="using:UnoDesigner.Converters"
     xmlns:design="using:Zafiro.Uwp.Design.Uno"
-    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
-    mc:Ignorable="d">
+    xmlns:parts="using:UnoDesigner.Shared.Parts"
+    DataContext="{Binding Source={StaticResource Composition}, Path=Root}">
 
-    <Page.Resources>
-        <converters:EmbeddedResourceToBitmapConverter x:Key="EmbeddedResourceToBitmapConverter" />
-        <converters:TypeNameTemplateSelector x:Key="TypeNameTemplateSelector">
-            <converters:TypeNameTemplateSelector.Items>
-                <ResourceDictionary>
-                    <DataTemplate x:Key="Rectangle">
-                        <Border Background="Red" />
-                    </DataTemplate>
-                    <DataTemplate x:Key="Picture" x:DataType="local:Picture">
-                        <Image Stretch="Fill" Source="{Binding Source}" />
-                    </DataTemplate>
-                </ResourceDictionary>
-            </converters:TypeNameTemplateSelector.Items>
-        </converters:TypeNameTemplateSelector>
-    </Page.Resources>
+    <parts:MainSurfaceControl />
 
-    <Page.DataContext>
-        <local:MainViewModel />
-    </Page.DataContext>
-
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition />
-        </Grid.RowDefinitions>
-        
-        <design:DesignerSurface Grid.Row="1" ItemsSource="{Binding Items}"
-                                Background="Beige"
-                                LeftBinding="{Binding Left}"
-                                TopBinding="{Binding Top}"
-                                WidthBinding="{Binding Width}"
-                                HeightBinding="{Binding Height}"
-                                ItemTemplateSelector="{StaticResource TypeNameTemplateSelector}">
-        </design:DesignerSurface>
-    </Grid>
 </Page>
