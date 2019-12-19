@@ -6,10 +6,19 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:viewModels="using:Designer.Domain.ViewModels"
+    xmlns:converters="using:Zafiro.Uwp.Converters"
+    xmlns:unoDesigner="using:UnoDesigner"
+    xmlns:convs="using:Zafiro.Uwp.Uno.Converters"
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400" d:DataContext="{d:DesignInstance viewModels:Document}">
 
+    <UserControl.Resources>
+        <converters:PipelineConverter x:Key="ToolToImageConverter">
+            <convs:TypeToStringConverter />
+            <unoDesigner:ToolNameToUriConverter />
+        </converters:PipelineConverter>
+    </UserControl.Resources>
     <Border>
         <ItemsControl ItemsSource="{Binding Tools}">
 
@@ -25,7 +34,8 @@
                             d:DataContext="{d:DesignInstance viewModels:Tool}">
 
                         <Button.Content>
-                            <Image Width="25" Height="25" />
+                            <!--<Image Width="25" Height="25" Source="/Images/Tools/EllipseTool.png" />-->
+                            <Image Width="25" Height="25" Source="{Binding Converter={StaticResource ToolToImageConverter}, ConverterParameter='Images/Tools'}" />
                         </Button.Content>
                     </Button>
                 </DataTemplate>

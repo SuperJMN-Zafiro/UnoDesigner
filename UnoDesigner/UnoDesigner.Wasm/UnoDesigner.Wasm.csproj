@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Zafiro.Uwp.Design.Uno\Zafiro.Uwp.Design.Uno.csproj" />
+    <ProjectReference Include="..\..\Zafiro.Uwp.Uno\Zafiro.Uwp.Uno.csproj" />
     <ProjectReference Include="..\..\ZafiroDesigner.Core\Designer.Core\Designer.Core.csproj" />
     <ProjectReference Include="..\..\ZafiroDesigner.Core\Designer.Domain.Models\Designer.Domain.Models.csproj" />
     <ProjectReference Include="..\..\ZafiroDesigner.Core\Designer.Domain.ViewModels\Designer.Domain.ViewModels.csproj" />

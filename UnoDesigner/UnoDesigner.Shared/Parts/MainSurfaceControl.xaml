@@ -28,36 +28,37 @@
                 <ColumnDefinition Width="300" />
             </Grid.ColumnDefinitions>
 
-            <Grid Grid.Column="1">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="200" />
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
+            <!--<controls:DockPanel Grid.Column="1">
+                <ComboBox controls:DockPanel.Dock="Top" ItemsSource="{Binding Documents}" SelectedItem="{Binding SelectedDocument, Mode=TwoWay}" />
+                <local:EditorControl DataContext="{Binding SelectedDocument}" />
+            </controls:DockPanel>-->
 
-                <ListView ItemsSource="{Binding Documents}" SelectedItem="{Binding SelectedDocument, Mode=TwoWay}" />
-                <local:EditorControl Grid.Column="1" DataContext="{Binding SelectedDocument}" />
-            </Grid>
+            <!--<Pivot ItemsSource="{Binding Documents}" SelectedItem="{Binding SelectedDocument, Mode=TwoWay}"  Grid.Column="1">
 
-                <!--<controls:MasterDetailsView Grid.Column="1" ItemsSource="{Binding Documents}"
-                              SelectedItem="{Binding SelectedDocument, Mode=TwoWay}">-->
-                
 
-                <!--<controls:TabView.TabActionHeader>
-                    <Button Command="{Binding AddDocument}" 
-                                Margin="-1,0,0,0"
-                                BorderThickness="1"
-                                Background="Transparent">
-                        <SymbolIcon Symbol="Add" />
-                    </Button>
-                </controls:TabView.TabActionHeader>-->
-
-                <!--<controls:MasterDetailsView.ItemTemplate>
-                    <DataTemplate x:DataType="viewModels:Document">
-                        <TextBlock Text="{Binding Name, Mode=OneWay}" />
+                <Pivot.HeaderTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Name}" />
                     </DataTemplate>
-                </controls:MasterDetailsView.ItemTemplate>-->
+                </Pivot.HeaderTemplate>
 
-                <!--<controls:MasterDetailsView.DetailsTemplate>
+                <Pivot.ItemTemplate>
+                    <DataTemplate>
+                        <local:EditorControl />
+                    </DataTemplate>
+                </Pivot.ItemTemplate>
+            </Pivot>-->
+
+            <controls:MasterDetailsView Grid.Column="1" ItemsSource="{Binding Documents}"
+                              SelectedItem="{Binding SelectedDocument, Mode=TwoWay}">
+
+                <controls:MasterDetailsView.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Name}" />
+                    </DataTemplate>
+                </controls:MasterDetailsView.ItemTemplate>
+
+                <controls:MasterDetailsView.DetailsTemplate>
                     <DataTemplate>
                         <ScrollViewer ZoomMode="Enabled" VerticalScrollMode="Enabled" 
                                           d:DataContext="{d:DesignInstance viewModels:Document}"
@@ -65,8 +66,8 @@
                             <local:EditorControl />
                         </ScrollViewer>
                     </DataTemplate>
-                </controls:MasterDetailsView.DetailsTemplate>-->
-                
+                </controls:MasterDetailsView.DetailsTemplate>
+
                 <!--
             </controls:TabView>
 
@@ -106,7 +107,7 @@
             </controls:HeaderedContentControl>-->
                 <!--
         </Grid>-->
-
+            </controls:MasterDetailsView>
         </Grid>
     </Grid>
 </UserControl>

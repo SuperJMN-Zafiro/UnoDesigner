@@ -115,6 +115,10 @@
       <Project>{87ba0b8c-4440-4fc7-929e-84da996e6f56}</Project>
       <Name>Zafiro.Uwp.Design.Uno</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Zafiro.Uwp.Uno\Zafiro.Uwp.Uno.csproj">
+      <Project>{e05e9cb6-664f-43ce-b3f3-ec073b48f5f4}</Project>
+      <Name>Zafiro.Uwp.Uno</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\ZafiroDesigner.Core\Designer.Core\Designer.Core.csproj">
       <Project>{e9e0a681-b6ff-4e76-8be0-5646531e65bb}</Project>
       <Name>Designer.Core</Name>
@@ -133,6 +137,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DoNothingConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
