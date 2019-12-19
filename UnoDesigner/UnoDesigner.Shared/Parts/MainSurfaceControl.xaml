@@ -28,8 +28,18 @@
                 <ColumnDefinition Width="300" />
             </Grid.ColumnDefinitions>
 
-            <controls:MasterDetailsView Grid.Column="1" ItemsSource="{Binding Documents}"
-                              SelectedItem="{Binding SelectedDocument, Mode=TwoWay}">
+            <Grid Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <ListView ItemsSource="{Binding Documents}" SelectedItem="{Binding SelectedDocument, Mode=TwoWay}" />
+                <local:EditorControl Grid.Column="1" DataContext="{Binding SelectedDocument}" />
+            </Grid>
+
+                <!--<controls:MasterDetailsView Grid.Column="1" ItemsSource="{Binding Documents}"
+                              SelectedItem="{Binding SelectedDocument, Mode=TwoWay}">-->
                 
 
                 <!--<controls:TabView.TabActionHeader>
@@ -41,13 +51,13 @@
                     </Button>
                 </controls:TabView.TabActionHeader>-->
 
-                <controls:MasterDetailsView.ItemTemplate>
+                <!--<controls:MasterDetailsView.ItemTemplate>
                     <DataTemplate x:DataType="viewModels:Document">
                         <TextBlock Text="{Binding Name, Mode=OneWay}" />
                     </DataTemplate>
-                </controls:MasterDetailsView.ItemTemplate>
+                </controls:MasterDetailsView.ItemTemplate>-->
 
-                <controls:MasterDetailsView.DetailsTemplate>
+                <!--<controls:MasterDetailsView.DetailsTemplate>
                     <DataTemplate>
                         <ScrollViewer ZoomMode="Enabled" VerticalScrollMode="Enabled" 
                                           d:DataContext="{d:DesignInstance viewModels:Document}"
@@ -55,7 +65,7 @@
                             <local:EditorControl />
                         </ScrollViewer>
                     </DataTemplate>
-                </controls:MasterDetailsView.DetailsTemplate>
+                </controls:MasterDetailsView.DetailsTemplate>-->
                 
                 <!--
             </controls:TabView>
@@ -96,7 +106,7 @@
             </controls:HeaderedContentControl>-->
                 <!--
         </Grid>-->
-            </controls:MasterDetailsView>
+
         </Grid>
     </Grid>
 </UserControl>

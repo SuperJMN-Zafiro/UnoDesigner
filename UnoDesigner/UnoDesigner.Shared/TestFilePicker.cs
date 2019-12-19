@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reactive.Linq;
 using Zafiro.Core.Files;
 
 namespace UnoDesigner
@@ -8,12 +9,12 @@ namespace UnoDesigner
     {
         public IObservable<ZafiroFile> Pick(string title, string[] extensions)
         {
-            throw new NotImplementedException();
+            return Observable.Empty<ZafiroFile>();
         }
 
         public IObservable<ZafiroFile> PickSave(string title, KeyValuePair<string, IList<string>>[] extensions)
         {
-            throw new NotImplementedException();
+            return Observable.Empty<ZafiroFile>();
         }
     }
 }
