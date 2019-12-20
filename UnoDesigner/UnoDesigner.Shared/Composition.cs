@@ -28,7 +28,7 @@ namespace UnoDesigner
                 registrationBlock.Export<TestFilePicker>().As<IFilePicker>().Lifestyle.Singleton();
                 registrationBlock.Export<DesignContext>().As<IDesignContext>().Lifestyle.Singleton();
                 registrationBlock.Export<ViewModelFactory>().As<IViewModelFactory>().Lifestyle.Singleton();
-                registrationBlock.Export<ProjectStore>().As<IProjectStore>().Lifestyle.Singleton();
+                registrationBlock.Export<TestProjectStore>().As<IProjectStore>().Lifestyle.Singleton();
                 registrationBlock.Export<TestServiceFactory>().As<IServiceFactory>().Lifestyle.Singleton();
                 registrationBlock.Export<TestExtensionsProvider>().As<IExtensionsProvider>().Lifestyle.Singleton();
                 registrationBlock.Export<ProjectMapper>().As<IProjectMapper>().Lifestyle.Singleton();

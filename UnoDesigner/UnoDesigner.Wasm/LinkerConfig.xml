@@ -1,9 +1,12 @@
 ﻿<linker>
   <assembly fullname="UnoDesigner.Wasm" />
   <assembly fullname="Uno.UI" />
+  <assembly fullname="Designer.Domain.ViewModels" />
+  <assembly fullname="Designer.Core" />
+  <assembly fullname="AutoMapper" />
 
   <assembly fullname="System.Core">
-	<!-- This is required by JSon.NET and any expression.Compile caller -->
-	<type fullname="System.Linq.Expressions*" />
+    <!-- This is required by JSon.NET and any expression.Compile caller -->
+    <type fullname="System.Linq.Expressions*" />
   </assembly>
 </linker>

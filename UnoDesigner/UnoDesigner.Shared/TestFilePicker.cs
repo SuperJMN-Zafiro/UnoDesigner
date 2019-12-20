@@ -9,12 +9,12 @@ namespace UnoDesigner
     {
         public IObservable<ZafiroFile> Pick(string title, string[] extensions)
         {
-            return Observable.Empty<ZafiroFile>();
+            return Observable.Return<ZafiroFile>(null);
         }
 
         public IObservable<ZafiroFile> PickSave(string title, KeyValuePair<string, IList<string>>[] extensions)
         {
-            return Observable.Empty<ZafiroFile>();
+            return Observable.Return<ZafiroFile>(null);
         }
     }
 }

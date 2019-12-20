@@ -16,11 +16,10 @@
 
     <Style TargetType="uno:DesignerSurface">
 
-        <Setter Property="Background" Value="Transparent"></Setter>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="uno:DesignerSurface">
-                    <Border Background="White">
+                    <Border Background="{TemplateBinding Background}">
                         <ItemsPresenter />
                     </Border>
                 </ControlTemplate>

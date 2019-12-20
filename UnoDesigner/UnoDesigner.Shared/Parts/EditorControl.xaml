@@ -40,36 +40,7 @@
 
     <controls:DockPanel>
 
-        <Grid controls:DockPanel.Dock="Top">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
-            <local:ToolsControl />
-            <CommandBar Background="{ThemeResource AppBarBackgroundThemeBrush}" Grid.Column="1">
-                <AppBarButton Command="{Binding AlignToLeftCommand, ElementName=DesignerSurface}" Label="Align left">
-                    <AppBarButton.Icon>
-                        <FontIcon Glyph="&#xF594;" />
-                    </AppBarButton.Icon>
-                </AppBarButton>
-                <AppBarButton Command="{Binding AlignToRightCommand, ElementName=DesignerSurface}" Label="Align right">
-                    <AppBarButton.Icon>
-                        <FontIcon Glyph="&#xF595;" />
-                    </AppBarButton.Icon>
-                </AppBarButton>
-                <AppBarButton Command="{Binding AlignToTopCommand, ElementName=DesignerSurface}" Label="Align top">
-                    <AppBarButton.Icon>
-                        <FontIcon Glyph="&#xF596;" />
-                    </AppBarButton.Icon>
-                </AppBarButton>
-                <AppBarButton Command="{Binding AlignToBottomCommand, ElementName=DesignerSurface}"
-                              Label="Align bottom">
-                    <AppBarButton.Icon>
-                        <FontIcon Glyph="&#xF597;" />
-                    </AppBarButton.Icon>
-                </AppBarButton>
-            </CommandBar>
-        </Grid>
+        <local:ToolsControl controls:DockPanel.Dock="Top" />
 
         <Grid>
             <Grid.RowDefinitions>

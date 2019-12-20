@@ -44,6 +44,7 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)TestExtensionsProvider.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TestFilePicker.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TestProjectStore.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TestServiceFactory.cs" />
   </ItemGroup>
   <ItemGroup>

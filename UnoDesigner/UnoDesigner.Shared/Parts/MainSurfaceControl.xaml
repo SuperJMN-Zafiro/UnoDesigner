@@ -10,6 +10,7 @@
     xmlns:core="using:Designer.Core"
     mc:Ignorable="d"
     d:DesignHeight="300"
+    xmlns:not_android="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     d:DesignWidth="400" d:DataContext="{d:DesignInstance core:MainViewModel}">
 
     <Grid>
@@ -28,29 +29,8 @@
                 <ColumnDefinition Width="300" />
             </Grid.ColumnDefinitions>
 
-            <!--<controls:DockPanel Grid.Column="1">
-                <ComboBox controls:DockPanel.Dock="Top" ItemsSource="{Binding Documents}" SelectedItem="{Binding SelectedDocument, Mode=TwoWay}" />
-                <local:EditorControl DataContext="{Binding SelectedDocument}" />
-            </controls:DockPanel>-->
-
-            <!--<Pivot ItemsSource="{Binding Documents}" SelectedItem="{Binding SelectedDocument, Mode=TwoWay}"  Grid.Column="1">
-
-
-                <Pivot.HeaderTemplate>
-                    <DataTemplate>
-                        <TextBlock Text="{Binding Name}" />
-                    </DataTemplate>
-                </Pivot.HeaderTemplate>
-
-                <Pivot.ItemTemplate>
-                    <DataTemplate>
-                        <local:EditorControl />
-                    </DataTemplate>
-                </Pivot.ItemTemplate>
-            </Pivot>-->
-
-            <controls:MasterDetailsView Grid.Column="1" ItemsSource="{Binding Documents}"
-                              SelectedItem="{Binding SelectedDocument, Mode=TwoWay}">
+            <controls:MasterDetailsView Grid.Column="1" ItemsSource="{Binding Documents}" MasterPaneWidth="100" CompactModeThresholdWidth="200"
+                                        SelectedItem="{Binding SelectedDocument, Mode=TwoWay}">
 
                 <controls:MasterDetailsView.ItemTemplate>
                     <DataTemplate>
@@ -68,46 +48,11 @@
                     </DataTemplate>
                 </controls:MasterDetailsView.DetailsTemplate>
 
-                <!--
-            </controls:TabView>
-
-            -->
-                <!--<controls:GridSplitter Grid.Column="2" Opacity="0.5" />
-
-            <controls:HeaderedContentControl Header="Properties" Grid.Column="3" >
-
-                <controls:HeaderedContentControl.Style>
-                    <Style TargetType="controls:HeaderedContentControl" >
-                        <Setter Property="BorderThickness" Value="1" />
-                        <Setter Property="BorderBrush" Value="{ThemeResource SystemControlBackgroundAccentBrush}" />
-                        <Setter Property="Background" Value="{ThemeResource SystemControlBackgroundAccentBrush}" />
-                        <Setter Property="Template">
-                            <Setter.Value>
-                                <ControlTemplate TargetType="controls:HeaderedContentControl">
-                                    <Border
-                                            BorderBrush="{TemplateBinding BorderBrush}"
-                                            BorderThickness="{TemplateBinding BorderThickness}">
-                                        <Grid>
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="Auto" />
-                                                <RowDefinition />
-                                            </Grid.RowDefinitions>
-                                            <Border Background="{TemplateBinding Background}" Padding="{ThemeResource ButtonBorderThemeThickness}">
-                                                <TextBlock Text="{TemplateBinding Header}" TextAlignment="Center" FontWeight="Bold" TextWrapping="Wrap" Foreground="{ThemeResource AppBarBorderThemeBrush}"/>
-                                            </Border>
-                                            <ContentPresenter Grid.Row="1" />
-                                        </Grid>
-                                    </Border>
-                                </ControlTemplate>
-                            </Setter.Value>
-                        </Setter>
-                    </Style>
-                </controls:HeaderedContentControl.Style>
-                <local:PropertiesControl />
-            </controls:HeaderedContentControl>-->
-                <!--
-        </Grid>-->
             </controls:MasterDetailsView>
+
+            <controls:GridSplitter Grid.Column="2" Opacity="0.5" />
+
+            <local:PropertiesControl Grid.Column="3" />
         </Grid>
     </Grid>
 </UserControl>

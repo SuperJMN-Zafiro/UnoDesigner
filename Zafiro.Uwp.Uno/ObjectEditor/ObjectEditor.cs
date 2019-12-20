@@ -13,11 +13,11 @@ namespace Zafiro.Uwp.Uno.ObjectEditor
     {
         public static readonly DependencyProperty SelectedItemsProperty = DependencyProperty.Register(
             "SelectedItems", typeof(object), typeof(ObjectEditor),
-            new PropertyMetadata(default, OnSelectedItemsChanged));
+            new PropertyMetadata(default, (obj, _) => RefreshItems((ObjectEditor) obj)));
 
         public static readonly DependencyProperty DefaultEditorTemplateProperty = DependencyProperty.Register(
             "DefaultEditorTemplate", typeof(DataTemplate), typeof(ObjectEditor),
-            new PropertyMetadata(default(DataTemplate)));
+            new PropertyMetadata(null, (obj, __) => RefreshItems((ObjectEditor) obj)));
 
         public static readonly DependencyProperty PropertyItemsProperty = DependencyProperty.Register(
             "PropertyItems", typeof(IList<PropertyItem>), typeof(ObjectEditor),
@@ -42,15 +42,18 @@ namespace Zafiro.Uwp.Uno.ObjectEditor
             set => SetValue(PropertyItemsProperty, value);
         }
 
-        public DataTemplate DefaultEditorTemplate { get; set; }
+        public DataTemplate DefaultEditorTemplate
+        {
+            get => (DataTemplate) this.GetValue(DefaultEditorTemplateProperty);
+            set => this.SetValue(DefaultEditorTemplateProperty, value);
+        }
 
         public EditorCollection Editors { get; set; } = new EditorCollection();
         public EditorCollection<DataTemplate> EditorsCore => new EditorCollection<DataTemplate>(Editors.ToList());
 
-        private static void OnSelectedItemsChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        private static void RefreshItems(ObjectEditor objectEditor)
         {
-            var target = (ObjectEditor) d;
-            target.objectEditorCore.OnSelectedItemsChanged(e.NewValue);
+            objectEditor.objectEditorCore.OnSelectedItemsChanged(objectEditor.SelectedItems);
         }
 
         public object SelectedItems

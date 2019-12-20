@@ -70,7 +70,7 @@
     <PackageReference Include="Uno.Microsoft.Toolkit.Uwp.UI.Controls">
       <Version>5.1.0-build.200.gf9c311b069</Version>
     </PackageReference>
-    <PackageReference Include="Uno.UI" Version="2.1.0-dev.289" />
+    <PackageReference Include="Uno.UI" Version="2.1.0-dev.384" />
     <PackageReference Include="Uno.UniversalImageLoader" Version="1.9.32" />
     <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="1.1.1" />
     <PackageReference Include="Microsoft.Extensions.Logging.Filter" Version="1.1.2" />
@@ -109,6 +109,10 @@
     <ProjectReference Include="..\..\ZafiroDesigner.Core\Designer.Core\Designer.Core.csproj">
       <Project>{E9E0A681-B6FF-4E76-8BE0-5646531E65BB}</Project>
       <Name>Designer.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ZafiroDesigner.Core\Designer.Domain.Models\Designer.Domain.Models.csproj">
+      <Project>{f0c1644f-2e23-46be-bc73-998663e775ec}</Project>
+      <Name>Designer.Domain.Models</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\ZafiroDesigner.Core\Designer.Domain.ViewModels\Designer.Domain.ViewModels.csproj">
       <Project>{F1EC2921-EBDA-40C5-906D-B30EC5F5F1F5}</Project>
