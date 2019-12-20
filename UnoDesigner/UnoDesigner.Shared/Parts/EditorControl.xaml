@@ -26,7 +26,7 @@
                     <DataTemplate x:Key="Ellipse">
                         <Ellipse Fill="Red" />
                     </DataTemplate>
-                    <DataTemplate x:Key="Picture" x:DataType="unoDesigner:Picture">
+                    <DataTemplate x:Key="Picture">
                         <Image Stretch="Fill" Source="{Binding Source}" />
                     </DataTemplate>
                     <DataTemplate x:Key="TextBox">

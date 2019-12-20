@@ -20,4 +20,24 @@
   <ItemGroup>
     <UpToDateCheckInput Include="**\*.xaml" Exclude="bin\**\*.xaml;obj\**\*.xaml" />
   </ItemGroup>
+  <ItemGroup>
+    <None Remove="Styles.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Styles.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="ReactiveUI.Uno" Version="11.0.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ZafiroDesigner.Core\Zafiro\Source\Zafiro.Core\Zafiro.Core.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="ObjectEditor\DefaultEditors\EnumEditor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="ObjectEditor\ObjectEditor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+  </ItemGroup>
 </Project>

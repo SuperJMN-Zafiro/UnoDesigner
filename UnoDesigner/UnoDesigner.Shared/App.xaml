@@ -10,7 +10,8 @@
         <ResourceDictionary>
 
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="ms-appx:///Zafiro.Uwp.Design.Uno/Styles/Styles.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="ms-appx:///Zafiro.Uwp.Design.Uno/Styles/Styles.xaml" />
+                <ResourceDictionary Source="ms-appx:///Zafiro.Uwp.Uno/Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
             <local:Composition x:Key="Composition" />
