@@ -23,9 +23,16 @@
                     <DataTemplate x:Key="Rectangle">
                         <Border Background="Red" />
                     </DataTemplate>
+                    <DataTemplate x:Key="Ellipse">
+                        <Ellipse Fill="Red" />
+                    </DataTemplate>
                     <DataTemplate x:Key="Picture" x:DataType="unoDesigner:Picture">
                         <Image Stretch="Fill" Source="{Binding Source}" />
                     </DataTemplate>
+                    <DataTemplate x:Key="TextBox">
+                        <TextBox Text="{Binding Text}" />
+                    </DataTemplate>
+
                 </ResourceDictionary>
             </converters:TypeNameTemplateSelector.Items>
         </converters:TypeNameTemplateSelector>

@@ -42,9 +42,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Parts\ToolsControl.xaml.cs">
       <DependentUpon>ToolsControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Shapes\Item.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Shapes\Picture.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Shapes\Rectangle.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TestExtensionsProvider.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TestFilePicker.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TestServiceFactory.cs" />
