@@ -18,20 +18,56 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Composition.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\BitmapUtils.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\EmbeddedResourceToBitmapConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\ResourceUtils.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\ToolNameToUriConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\TypeNameTemplateSelector.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)MainViewModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Shapes\Item.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Shapes\Picture.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Shapes\Rectangle.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Parts\EditorControl.xaml.cs">
+      <DependentUpon>EditorControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Parts\MainSurfaceControl.xaml.cs">
+      <DependentUpon>MainSurfaceControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Parts\MenuControl.xaml.cs">
+      <DependentUpon>MenuControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Parts\PropertiesControl.xaml.cs">
+      <DependentUpon>PropertiesControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Parts\ToolsControl.xaml.cs">
+      <DependentUpon>ToolsControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)TestExtensionsProvider.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TestFilePicker.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TestServiceFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="$(MSBuildThisFileDirectory)MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Parts\EditorControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Parts\MainSurfaceControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Parts\MenuControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Parts\PropertiesControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Parts\ToolsControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -44,6 +80,11 @@
     <Content Include="$(MSBuildThisFileDirectory)Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\StoreLogo.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\Wide310x150Logo.scale-200.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Images\Tools\EllipseTool.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Images\Tools\ImageTool.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Images\Tools\LineTool.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Images\Tools\RectangleTool.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Images\Tools\TextTool.png" />
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Images\block.png" />
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Images\mario.png" />
   </ItemGroup>

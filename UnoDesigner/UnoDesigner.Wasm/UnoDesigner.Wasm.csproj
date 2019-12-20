@@ -32,6 +32,7 @@
   </ItemGroup>
   <ItemGroup>
     <!-- Note that for WebAssembly version 1.1.1 of the console logger required -->
+    <PackageReference Include="Grace" Version="7.1.0" />
     <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="1.1.1" />
     <PackageReference Include="Microsoft.Extensions.Logging.Filter" Version="1.1.2" />
     <PackageReference Include="System.Reactive" Version="4.3.1" />
@@ -42,6 +43,11 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Zafiro.Uwp.Design.Uno\Zafiro.Uwp.Design.Uno.csproj" />
+    <ProjectReference Include="..\..\Zafiro.Uwp.Uno\Zafiro.Uwp.Uno.csproj" />
+    <ProjectReference Include="..\..\ZafiroDesigner.Core\Designer.Core\Designer.Core.csproj" />
+    <ProjectReference Include="..\..\ZafiroDesigner.Core\Designer.Domain.Models\Designer.Domain.Models.csproj" />
+    <ProjectReference Include="..\..\ZafiroDesigner.Core\Designer.Domain.ViewModels\Designer.Domain.ViewModels.csproj" />
+    <ProjectReference Include="..\..\ZafiroDesigner.Core\Zafiro\Source\Zafiro.Core\Zafiro.Core.csproj" />
   </ItemGroup>
   <Import Project="..\UnoDesigner.Shared\UnoDesigner.Shared.projitems" Label="Shared" Condition="Exists('..\UnoDesigner.Shared\UnoDesigner.Shared.projitems')" />
 </Project>
