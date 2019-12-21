@@ -36,8 +36,14 @@
     <Compile Include="$(MSBuildThisFileDirectory)Parts\EditorControl.xaml.cs">
       <DependentUpon>EditorControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Parts\Graphics\LineControl.xaml.cs">
+      <DependentUpon>LineControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Parts\Graphics\RectangleControl.xaml.cs">
-      <DependentUpon>$fileinputname$.xaml</DependentUpon>
+      <DependentUpon>RectangleControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Parts\Graphics\TextBoxControl.xaml.cs">
+      <DependentUpon>TextBoxControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Parts\MainSurfaceControl.xaml.cs">
       <DependentUpon>MainSurfaceControl.xaml</DependentUpon>
@@ -45,17 +51,23 @@
     <Compile Include="$(MSBuildThisFileDirectory)Parts\MenuControl.xaml.cs">
       <DependentUpon>MenuControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Parts\PropertiesControl.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Parts\Graphics\NumericFieldControl.xaml.cs">
+      <DependentUpon>NumericFieldControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Parts\Graphics\PropertiesControl.xaml.cs">
       <DependentUpon>PropertiesControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Parts\ToolsControl.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Parts\Graphics\TextFieldControl.xaml.cs">
+      <DependentUpon>TextFieldControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Parts\Graphics\ToolsControl.xaml.cs">
       <DependentUpon>ToolsControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)TestExtensionsProvider.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)CrossPlatformFilePicker.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)TestProjectStore.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)TestServiceFactory.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)XamFile.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\TestExtensionsProvider.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\CrossPlatformFilePicker.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\TestProjectStore.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\TestServiceFactory.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\CrossPlatformFile.cs" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="$(MSBuildThisFileDirectory)MainPage.xaml">
@@ -66,7 +78,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Parts\Graphics\LineControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="$(MSBuildThisFileDirectory)Parts\Graphics\RectangleControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Parts\Graphics\TextBoxControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -78,11 +98,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Parts\PropertiesControl.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)Parts\Graphics\NumericFieldControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Parts\ToolsControl.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)Parts\Graphics\PropertiesControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Parts\Graphics\TextFieldControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Parts\Graphics\ToolsControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -105,5 +133,8 @@
   </ItemGroup>
   <ItemGroup>
     <PRIResource Include="$(MSBuildThisFileDirectory)Strings\en\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Services\" />
   </ItemGroup>
 </Project>

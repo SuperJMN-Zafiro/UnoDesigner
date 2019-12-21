@@ -3,7 +3,7 @@ using System.Collections.ObjectModel;
 using Designer.Core;
 using DynamicData;
 
-namespace UnoDesigner
+namespace UnoDesigner.Droid.Services
 {
     public class TestExtensionsProvider : IExtensionsProvider
     {

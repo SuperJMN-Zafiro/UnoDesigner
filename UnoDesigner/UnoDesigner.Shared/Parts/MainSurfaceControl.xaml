@@ -26,10 +26,16 @@
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition />
                 <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="300" />
+                <ColumnDefinition Width="140" />
             </Grid.ColumnDefinitions>
 
-            <controls:MasterDetailsView Grid.Column="1" ItemsSource="{Binding Documents}" MasterPaneWidth="100" CompactModeThresholdWidth="200"
+            <Grid  Grid.Column="1">
+                <local:EditorControl DataContext="{Binding SelectedDocument}" />
+                <ComboBox ItemsSource="{Binding Documents}" VerticalAlignment="Bottom" DisplayMemberPath="Name"
+                          SelectedItem="{Binding SelectedDocument, Mode=TwoWay}"></ComboBox>
+            </Grid>
+
+            <!--<controls:MasterDetailsView Grid.Column="1" ItemsSource="{Binding Documents}" MasterPaneWidth="100" CompactModeThresholdWidth="200"
                                         SelectedItem="{Binding SelectedDocument, Mode=TwoWay}">
 
                 <controls:MasterDetailsView.ItemTemplate>
@@ -48,7 +54,7 @@
                     </DataTemplate>
                 </controls:MasterDetailsView.DetailsTemplate>
 
-            </controls:MasterDetailsView>
+            </controls:MasterDetailsView>-->
 
             <controls:GridSplitter Grid.Column="2" Opacity="0.5" />
 

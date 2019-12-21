@@ -5,11 +5,17 @@
     xmlns:local="using:UnoDesigner.Shared.Parts"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:core="using:Designer.Core"
     mc:Ignorable="d"
     d:DesignHeight="300"
-    d:DesignWidth="400">
+    d:DesignWidth="400" d:DataContext="{d:DesignInstance core:MainViewModel}">
 
-    <Grid>
-
-    </Grid>
+    <MenuBar>
+        <MenuBarItem Title="File">
+            <MenuFlyoutItem Text="New" Command="{Binding New}" />
+            <MenuFlyoutSeparator />
+            <MenuFlyoutItem Text="Open" Command="{Binding Load}" />
+            <MenuFlyoutItem Text="Save" Command="{Binding Save}" />
+        </MenuBarItem>
+    </MenuBar>
 </UserControl>

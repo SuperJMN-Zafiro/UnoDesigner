@@ -4,6 +4,8 @@ using Designer.Core.Persistence;
 using Designer.Core.Tools;
 using Designer.Domain.ViewModels;
 using Grace.DependencyInjection;
+using UnoDesigner.Droid.Services;
+using UnoDesigner.Services;
 using Zafiro.Core.Files;
 
 namespace UnoDesigner
@@ -28,7 +30,7 @@ namespace UnoDesigner
                 registrationBlock.Export<CrossPlatformFilePicker>().As<IFilePicker>().Lifestyle.Singleton();
                 registrationBlock.Export<DesignContext>().As<IDesignContext>().Lifestyle.Singleton();
                 registrationBlock.Export<ViewModelFactory>().As<IViewModelFactory>().Lifestyle.Singleton();
-                registrationBlock.Export<TestProjectStore>().As<IProjectStore>().Lifestyle.Singleton();
+                registrationBlock.Export<ProjectStore>().As<IProjectStore>().Lifestyle.Singleton();
                 registrationBlock.Export<TestServiceFactory>().As<IServiceFactory>().Lifestyle.Singleton();
                 registrationBlock.Export<TestExtensionsProvider>().As<IExtensionsProvider>().Lifestyle.Singleton();
                 registrationBlock.Export<ProjectMapper>().As<IProjectMapper>().Lifestyle.Singleton();

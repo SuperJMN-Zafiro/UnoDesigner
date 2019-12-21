@@ -11,6 +11,7 @@
     xmlns:designer="using:Zafiro.Uwp.Design.Uno"
     xmlns:viewModels="using:Designer.Domain.ViewModels"
     xmlns:g="using:UnoDesigner.Shared.Parts.Graphics"
+    xmlns:graphics="using:Designer.Parts.Graphics"
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400"
@@ -21,17 +22,33 @@
         <converters:TypeNameTemplateSelector x:Key="TypeNameTemplateSelector">
             <converters:TypeNameTemplateSelector.Items>
                 <ResourceDictionary>
+
                     <DataTemplate x:Key="Rectangle">
                         <g:RectangleControl />
                     </DataTemplate>
+
                     <DataTemplate x:Key="Ellipse">
                         <Ellipse Fill="Red" />
                     </DataTemplate>
+
                     <DataTemplate x:Key="Image" x:DataType="viewModels:Image">
                         <Image Stretch="Fill" Source="{Binding Source, Converter={StaticResource ByteArrayToImageSourceConverter}}" />
                     </DataTemplate>
+
+                    <DataTemplate x:Key="TextField">
+                        <graphics:TextFieldControl />
+                    </DataTemplate>
+
+                    <DataTemplate x:Key="NumericField">
+                        <graphics:NumericFieldControl />
+                    </DataTemplate>
+
+                    <DataTemplate x:Key="Line">
+                        <graphics:LineControl />
+                    </DataTemplate>
+
                     <DataTemplate x:Key="TextBox">
-                        <TextBox Text="{Binding Text}" />
+                        <graphics:TextBoxControl />
                     </DataTemplate>
 
                 </ResourceDictionary>
@@ -55,19 +72,24 @@
             </Grid.ColumnDefinitions>
 
             <!-- ReSharper disable Xaml.BindingWithContextNotResolved -->
-            <designer:DesignerSurface Grid.Column="1"
-                                      Grid.Row="1"
-                                      x:Name="DesignerSurface"
-                                      ItemsSource="{Binding Graphics}"
-                                      LeftBinding="{Binding Left, Mode=TwoWay}"
-                                      TopBinding="{Binding Top, Mode=TwoWay}"
-                                      HeightBinding="{Binding Height, Mode=TwoWay}"
-                                      WidthBinding="{Binding Width, Mode=TwoWay}"
-                                      AngleBinding="{Binding Angle, Mode=OneWay}"
-                                      ItemTemplateSelector="{StaticResource TypeNameTemplateSelector}"
-                                      SelectedItems="{Binding SelectedItems, Mode=TwoWay}">
-               
-            </designer:DesignerSurface>
+
+            <ScrollViewer Grid.Column="1"
+                          Grid.Row="1" 
+                          ZoomMode="Enabled" VerticalScrollMode="Enabled" 
+                          HorizontalScrollMode="Enabled" HorizontalScrollBarVisibility="Auto">
+                <designer:DesignerSurface 
+                                          x:Name="DesignerSurface"
+                                          ItemsSource="{Binding Graphics}"
+                                          LeftBinding="{Binding Left, Mode=TwoWay}"
+                                          TopBinding="{Binding Top, Mode=TwoWay}"
+                                          HeightBinding="{Binding Height, Mode=TwoWay}"
+                                          WidthBinding="{Binding Width, Mode=TwoWay}"
+                                          AngleBinding="{Binding Angle, Mode=OneWay}"
+                                          ItemTemplateSelector="{StaticResource TypeNameTemplateSelector}"
+                                          SelectedItems="{Binding SelectedItems, Mode=TwoWay}">
+
+                </designer:DesignerSurface>
+            </ScrollViewer>
         </Grid>
     </controls:DockPanel>
 </UserControl>
