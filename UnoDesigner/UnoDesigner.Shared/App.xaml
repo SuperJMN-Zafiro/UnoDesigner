@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:UnoDesigner"
     xmlns:converters="using:Zafiro.Uwp.Uno.Converters"
+    xmlns:vconvs="using:UnoDesigner.Converters"
     RequestedTheme="Light">
 
   <Application.Resources>
@@ -17,6 +18,11 @@
 
             <local:Composition x:Key="Composition" />
             <converters:ByteArrayToImageConverter x:Key="ByteArrayToImageSourceConverter" />
+            <vconvs:ZeroToCollapsedConverter x:Key="ZeroToCollapsedConverter" />
+            <vconvs:DoubleToCornerRadiusConverter x:Key="DoubleToCornerRadiusConverter" />
+            <vconvs:ColorToBrushConverter x:Key="ColorToBrushConverter" />
+            <vconvs:CornerRadiusConverter x:Key="CornerRadiusConverter" />
+            <vconvs:ThicknessConverter x:Key="ThicknessConverter" />
 
         </ResourceDictionary>
 

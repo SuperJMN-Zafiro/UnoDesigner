@@ -20,15 +20,24 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Composition.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\BitmapUtils.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\ColorToBrushConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\CornerRadiusConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\DoubleToCornerRadiusConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\EmbeddedResourceToBitmapConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\ResourceUtils.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\ThicknessConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\ToolNameToUriConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\TypeNameTemplateSelector.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\ValueConversion.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\ZeroToCollapsedConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Parts\EditorControl.xaml.cs">
       <DependentUpon>EditorControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Parts\Graphics\RectangleControl.xaml.cs">
+      <DependentUpon>$fileinputname$.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Parts\MainSurfaceControl.xaml.cs">
       <DependentUpon>MainSurfaceControl.xaml</DependentUpon>
@@ -54,6 +63,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Parts\EditorControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Parts\Graphics\RectangleControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
