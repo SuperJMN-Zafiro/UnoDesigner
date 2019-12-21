@@ -25,7 +25,7 @@ namespace UnoDesigner
                         .Where(x => !x.IsAbstract))
                     .ByTypes(type => new[] { toolType });
 
-                registrationBlock.Export<TestFilePicker>().As<IFilePicker>().Lifestyle.Singleton();
+                registrationBlock.Export<CrossPlatformFilePicker>().As<IFilePicker>().Lifestyle.Singleton();
                 registrationBlock.Export<DesignContext>().As<IDesignContext>().Lifestyle.Singleton();
                 registrationBlock.Export<ViewModelFactory>().As<IViewModelFactory>().Lifestyle.Singleton();
                 registrationBlock.Export<TestProjectStore>().As<IProjectStore>().Lifestyle.Singleton();

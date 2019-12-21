@@ -43,9 +43,10 @@
       <DependentUpon>ToolsControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)TestExtensionsProvider.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)TestFilePicker.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CrossPlatformFilePicker.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TestProjectStore.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TestServiceFactory.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)XamFile.cs" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="$(MSBuildThisFileDirectory)MainPage.xaml">

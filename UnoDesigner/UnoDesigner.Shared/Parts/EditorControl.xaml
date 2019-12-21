@@ -26,8 +26,8 @@
                     <DataTemplate x:Key="Ellipse">
                         <Ellipse Fill="Red" />
                     </DataTemplate>
-                    <DataTemplate x:Key="Picture">
-                        <Image Stretch="Fill" Source="{Binding Source}" />
+                    <DataTemplate x:Key="Image" x:DataType="viewModels:Image">
+                        <Image Stretch="Fill" Source="{Binding Source, Converter={StaticResource ByteArrayToImageSourceConverter}}" />
                     </DataTemplate>
                     <DataTemplate x:Key="TextBox">
                         <TextBox Text="{Binding Text}" />
