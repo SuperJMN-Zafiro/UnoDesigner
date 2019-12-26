@@ -23,6 +23,7 @@
             <vconvs:ColorToBrushConverter x:Key="ColorToBrushConverter" />
             <vconvs:CornerRadiusConverter x:Key="CornerRadiusConverter" />
             <vconvs:ThicknessConverter x:Key="ThicknessConverter" />
+            <vconvs:PercentageConverter x:Key="PercentageConverter" />
 
         </ResourceDictionary>
 

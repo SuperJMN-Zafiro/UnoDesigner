@@ -48,8 +48,24 @@ namespace Zafiro.Uwp.Uno.ObjectEditor
             set => this.SetValue(DefaultEditorTemplateProperty, value);
         }
 
-        public EditorCollection Editors { get; set; } = new EditorCollection();
-        public EditorCollection<DataTemplate> EditorsCore => new EditorCollection<DataTemplate>(Editors.ToList());
+        public EditorCollection<DataTemplate> EditorsCore
+        {
+            get
+            {
+                return new EditorCollection<DataTemplate>(EditorDefinitions
+                    .Select(d =>
+                    {
+                        if (d.DefinitionKey == null)
+                        {
+                            throw new InvalidOperationException($"The Key of an EditorDefinition cannot be null");
+                        }
+
+                        return new Editor<DataTemplate>(d.Template,
+                            new EditorKey(d.DefinitionKey.TargetType, d.DefinitionKey.Properties.ToList()));
+                    })
+                    .ToList());
+            }
+        }
 
         private static void RefreshItems(ObjectEditor objectEditor)
         {
@@ -61,5 +77,7 @@ namespace Zafiro.Uwp.Uno.ObjectEditor
             get => GetValue(SelectedItemsProperty);
             set => SetValue(SelectedItemsProperty, value);
         }
+
+        public EditorDefinitionCollection EditorDefinitions { get; set; } = new EditorDefinitionCollection();
     }
 }

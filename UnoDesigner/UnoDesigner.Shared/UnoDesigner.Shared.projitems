@@ -24,6 +24,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Converters\CornerRadiusConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\DoubleToCornerRadiusConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\EmbeddedResourceToBitmapConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\PercentageConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\ResourceUtils.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\ThicknessConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\ToolNameToUriConverter.cs" />
@@ -35,6 +36,9 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Parts\EditorControl.xaml.cs">
       <DependentUpon>EditorControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Parts\Graphics\EllipseControl.xaml.cs">
+      <DependentUpon>EllipseControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Parts\Graphics\LineControl.xaml.cs">
       <DependentUpon>LineControl.xaml</DependentUpon>
@@ -54,13 +58,13 @@
     <Compile Include="$(MSBuildThisFileDirectory)Parts\Graphics\NumericFieldControl.xaml.cs">
       <DependentUpon>NumericFieldControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Parts\Graphics\PropertiesControl.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Parts\PropertiesControl.xaml.cs">
       <DependentUpon>PropertiesControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Parts\Graphics\TextFieldControl.xaml.cs">
       <DependentUpon>TextFieldControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Parts\Graphics\ToolsControl.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Parts\ToolsControl.xaml.cs">
       <DependentUpon>ToolsControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Services\TestExtensionsProvider.cs" />
@@ -75,6 +79,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Parts\EditorControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Parts\Graphics\EllipseControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -102,7 +110,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Parts\Graphics\PropertiesControl.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)Parts\PropertiesControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -110,7 +118,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Parts\Graphics\ToolsControl.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)Parts\ToolsControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

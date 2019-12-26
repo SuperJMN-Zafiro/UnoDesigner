@@ -28,7 +28,7 @@
                     </DataTemplate>
 
                     <DataTemplate x:Key="Ellipse">
-                        <Ellipse Fill="Red" />
+                        <g:EllipseControl />
                     </DataTemplate>
 
                     <DataTemplate x:Key="Image" x:DataType="viewModels:Image">

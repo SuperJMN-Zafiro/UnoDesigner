@@ -1,0 +1,25 @@
+﻿<UserControl
+    x:Class="UnoDesigner.Shared.Parts.Graphics.EllipseControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:UnoDesigner.Shared.Parts.Graphics"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" d:DataContext="{d:DesignInstance items:Ellipse}">
+
+    <Grid>
+        <Ellipse Fill="{Binding Shadow.Color, Converter={StaticResource ColorToBrushConverter}}"
+                 Visibility="{Binding Path=Shadow.Distance, Converter={StaticResource ZeroToCollapsedConverter}}">
+            <Ellipse.RenderTransform>
+                <TranslateTransform
+                    X="{Binding Shadow.ShadowX, Mode=OneWay}"
+                    Y="{Binding Shadow.ShadowY, Mode=OneWay}" />
+            </Ellipse.RenderTransform>
+        </Ellipse>
+        <Ellipse d:DataContext="{d:DesignInstance viewModels:Ellipse}"
+                 Stroke="{Binding Stroke, Converter={StaticResource ColorToBrushConverter}}"
+                 Fill="{Binding TintedBackground, Mode=OneWay, Converter={StaticResource ColorToBrushConverter}}"
+                 StrokeThickness="{Binding StrokeThickness}">
+        </Ellipse>
+    </Grid>
+</UserControl>

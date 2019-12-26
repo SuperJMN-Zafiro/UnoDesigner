@@ -1,0 +1,83 @@
+﻿<UserControl
+    x:Class="UnoDesigner.Shared.Parts.PropertiesControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:UnoDesigner.Shared.Parts"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:oe="using:Zafiro.Uwp.Uno.ObjectEditor"
+    xmlns:viewModels="using:Designer.Domain.ViewModels"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400" d:DataContext="{d:DesignInstance viewModels:Project}">
+
+    <oe:ObjectEditor SelectedItems="{Binding SelectedDocument.SelectedItems}" Margin="4">
+        <oe:ObjectEditor.DefaultEditorTemplate>
+            <DataTemplate>
+                <TextBox Text="{Binding Value, Mode=TwoWay}" />
+            </DataTemplate>
+        </oe:ObjectEditor.DefaultEditorTemplate>
+        <oe:ObjectEditor.EditorDefinitions>
+            <oe:EditorDefinition>
+                <oe:EditorDefinition.DefinitionKey>
+                    <oe:EditorDefinitionKey KeyString="System.Double, mscorlib|CornerRadius,Distance,StrokeThickness"  />
+                </oe:EditorDefinition.DefinitionKey>
+                <oe:EditorDefinition.Template>
+                    <DataTemplate x:DataType="oe:PropertyItem">
+                        <Slider Value="{Binding Value, Mode=TwoWay}" />
+                    </DataTemplate>
+                </oe:EditorDefinition.Template>
+            </oe:EditorDefinition>
+            <oe:EditorDefinition>
+                <oe:EditorDefinition.DefinitionKey>
+                    <oe:EditorDefinitionKey KeyString="System.Double, mscorlib|BackgroundTint" />
+                </oe:EditorDefinition.DefinitionKey>
+                <oe:EditorDefinition.Template>
+                    <DataTemplate x:DataType="oe:PropertyItem">
+                        <Slider Maximum="1" ThumbToolTipValueConverter="{StaticResource PercentageConverter}" StepFrequency="0.05" Minimum="0" Value="{Binding Value, Mode=TwoWay}" />
+                    </DataTemplate>
+                </oe:EditorDefinition.Template>
+            </oe:EditorDefinition>
+
+            <!--<oe:EditorDefinition Key="Designer.Domain.Models.Color, Designer.Domain.Models|">
+                <oe:EditorDefinition.Template>
+                    <DataTemplate x:DataType="oe:PropertyItem">
+                        <Grid>
+                            <Button BorderThickness="1" BorderBrush="Black" VerticalAlignment="Stretch" Height="32" HorizontalAlignment="Stretch" Background="{Binding Value, Converter={StaticResource ColorToBrushConverter}}">
+                                <Button.Flyout>
+                                    <Flyout>
+                                        <controls1:ColorPicker Height="200" Width="200" Color="{Binding Value, Converter={StaticResource ColorConverter}, Mode=TwoWay}" />
+                                    </Flyout>
+                                </Button.Flyout>
+                            </Button>
+                        </Grid>
+                    </DataTemplate>
+                </oe:EditorDefinition.Template>
+            </oe:EditorDefinition>-->
+
+            <!--<oe:EditorDefinition Key="System.Double, mscorlib|Angle">
+
+                <oe:EditorDefinition.Template>
+                    <DataTemplate x:DataType="oe:PropertyItem">
+                        <controls:RadialGauge MaxAngle="360" Maximum="360" IsInteractive="True" Value="{Binding Value, Mode=TwoWay}"
+                                              Minimum="0"
+                                              StepSize="5"
+                                              TickSpacing="22"
+                                              ScaleWidth="12"
+                                              MinAngle="0"
+                                              Unit="units"
+                                              NeedleWidth="1"
+                                              NeedleLength="52" 
+                                              TickLength="6"
+                                              TickWidth="0"
+                                              ScalePadding="48"
+                                              ScaleTickWidth="2" MaxHeight="120"/>
+                    </DataTemplate>
+                </oe:EditorDefinition.Template>
+
+            </oe:EditorDefinition>-->
+
+        </oe:ObjectEditor.EditorDefinitions>
+    </oe:ObjectEditor>
+
+</UserControl>
