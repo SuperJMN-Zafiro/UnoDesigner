@@ -68,9 +68,9 @@
       <Version>4.3.2</Version>
     </PackageReference>
     <PackageReference Include="Uno.Microsoft.Toolkit.Uwp.UI.Controls">
-      <Version>5.1.0-build.200.gf9c311b069</Version>
+      <Version>6.0.0-ge975abb046</Version>
     </PackageReference>
-    <PackageReference Include="Uno.UI" Version="2.1.0-dev.481" />
+    <PackageReference Include="Uno.UI" Version="2.2.0-dev.260" />
     <PackageReference Include="Uno.UniversalImageLoader" Version="1.9.32" />
     <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="1.1.1" />
     <PackageReference Include="Microsoft.Extensions.Logging.Filter" Version="1.1.2" />
