@@ -24,6 +24,7 @@
             <vconvs:CornerRadiusConverter x:Key="CornerRadiusConverter" />
             <vconvs:ThicknessConverter x:Key="ThicknessConverter" />
             <vconvs:PercentageConverter x:Key="PercentageConverter" />
+            <converters:NoElementsToVisibilityConverter x:Key="NoElementsToVisibilityConverter"></converters:NoElementsToVisibilityConverter>
 
         </ResourceDictionary>
 

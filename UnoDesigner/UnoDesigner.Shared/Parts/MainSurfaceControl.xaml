@@ -9,17 +9,45 @@
     xmlns:viewModels="using:Designer.Domain.ViewModels"
     xmlns:core="using:Designer.Core"
     mc:Ignorable="d"
-    d:DesignHeight="300"
+    d:DesignHeight="403"
     xmlns:not_android="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    d:DesignWidth="400" d:DataContext="{d:DesignInstance core:MainViewModel}">
+    d:DesignWidth="303" d:DataContext="{d:DesignInstance core:MainViewModel}">
 
     <Grid>
+
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
             <RowDefinition />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <local:MenuControl />
+        <local:EditorControl DataContext="{Binding Project.SelectedDocument}" />
+        <controls:Expander HorizontalContentAlignment="Stretch" DataContext="{Binding Project}" Grid.Row="1" MaxHeight="400" Header="Properties" Visibility="{Binding SelectedDocument.SelectedItems, Converter={StaticResource NoElementsToVisibilityConverter}}">
+            <ScrollViewer>
+                <local:PropertiesControl /></ScrollViewer>
+        </controls:Expander>
+
+        <CommandBar Grid.Row="2">
+            <AppBarButton Content="New" Command="{Binding New}">
+                <!--<AppBarButton.Icon>
+                    <SymbolIcon Symbol="Page2" />
+                </AppBarButton.Icon>-->
+            </AppBarButton>
+            <AppBarButton Content="Load" Command="{Binding Load}">
+                <!--<AppBarButton.Icon>
+                    <SymbolIcon Symbol="Save" />
+                </AppBarButton.Icon>-->
+            </AppBarButton>
+            <AppBarButton Content="Save" Command="{Binding Save}">
+                <!--<AppBarButton.Icon>
+                    <SymbolIcon Symbol="OpenFile" />
+                </AppBarButton.Icon>-->
+            </AppBarButton>
+        </CommandBar>
+    </Grid>
+
+    <!--<Grid>
+   
 
         <Grid DataContext="{Binding Project}" Grid.Row="1" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
             <Grid.ColumnDefinitions>
@@ -35,7 +63,8 @@
                           SelectedItem="{Binding SelectedDocument, Mode=TwoWay}"></ComboBox>
             </Grid>
 
-            <!--<controls:MasterDetailsView Grid.Column="1" ItemsSource="{Binding Documents}" MasterPaneWidth="100" CompactModeThresholdWidth="200"
+            -->
+    <!--<controls:MasterDetailsView Grid.Column="1" ItemsSource="{Binding Documents}" MasterPaneWidth="100" CompactModeThresholdWidth="200"
                                         SelectedItem="{Binding SelectedDocument, Mode=TwoWay}">
 
                 <controls:MasterDetailsView.ItemTemplate>
@@ -55,10 +84,13 @@
                 </controls:MasterDetailsView.DetailsTemplate>
 
             </controls:MasterDetailsView>-->
+    <!--
 
             <controls:GridSplitter Grid.Column="2" Opacity="0.5" />
 
             <local:PropertiesControl Grid.Column="3" />
+
+            <local:MenuControl Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Left" />
         </Grid>
-    </Grid>
+    </Grid>-->
 </UserControl>

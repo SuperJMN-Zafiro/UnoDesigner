@@ -30,6 +30,7 @@ EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		UnoDesigner\UnoDesigner.Shared\UnoDesigner.Shared.projitems*{6279c845-92f8-4333-ab99-3d213163593c}*SharedItemsImports = 13
+		UnoDesigner\UnoDesigner.Shared\UnoDesigner.Shared.projitems*{951ba517-9ff1-4fa3-bee8-9ed915e49e61}*SharedItemsImports = 5
 		UnoDesigner\UnoDesigner.Shared\UnoDesigner.Shared.projitems*{cc3eeaf0-0f94-42f9-8086-cd2bedcfcf93}*SharedItemsImports = 4
 		UnoDesigner\UnoDesigner.Shared\UnoDesigner.Shared.projitems*{d47e3a53-b69f-43b4-8d6e-06e060e49ed5}*SharedItemsImports = 4
 	EndGlobalSection
