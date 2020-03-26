@@ -41,15 +41,14 @@
     <PackageReference Include="Uno.UI" Version="2.1.0-dev.481" />
     <PackageReference Include="Uno.Wasm.Bootstrap" Version="1.0.10" />
     <PackageReference Include="Xamarin.Plugin.FilePicker" Version="2.1.34" />
+    <PackageReference Include="Zafiro.Uno.Controls" Version="1.0.0" />
+    <PackageReference Include="Zafiro.Uno.Controls.Design" Version="1.0.1" />
     <DotNetCliToolReference Include="Uno.Wasm.Bootstrap.Cli" Version="1.0.0-dev.244" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Zafiro.Uwp.Design.Uno\Zafiro.Uwp.Design.Uno.csproj" />
-    <ProjectReference Include="..\..\Zafiro.Uwp.Uno\Zafiro.Uwp.Uno.csproj" />
     <ProjectReference Include="..\..\ZafiroDesigner.Core\Designer.Core\Designer.Core.csproj" />
     <ProjectReference Include="..\..\ZafiroDesigner.Core\Designer.Domain.Models\Designer.Domain.Models.csproj" />
     <ProjectReference Include="..\..\ZafiroDesigner.Core\Designer.Domain.ViewModels\Designer.Domain.ViewModels.csproj" />
-    <ProjectReference Include="..\..\ZafiroDesigner.Core\Zafiro\Source\Zafiro.Core\Zafiro.Core.csproj" />
   </ItemGroup>
   <Import Project="..\UnoDesigner.Shared\UnoDesigner.Shared.projitems" Label="Shared" Condition="Exists('..\UnoDesigner.Shared\UnoDesigner.Shared.projitems')" />
 </Project>

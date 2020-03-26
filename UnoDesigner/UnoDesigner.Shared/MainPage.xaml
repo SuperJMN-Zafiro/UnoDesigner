@@ -7,7 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     xmlns:converters="using:UnoDesigner.Converters"
-    xmlns:design="using:Zafiro.Uwp.Design.Uno"
+    xmlns:design="using:Zafiro.Uno.Controls.Design"
     xmlns:parts="using:UnoDesigner.Shared.Parts"
     DataContext="{Binding Source={StaticResource Composition}, Path=Root}">
 

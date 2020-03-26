@@ -3,7 +3,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:UnoDesigner"
-    xmlns:converters="using:Zafiro.Uwp.Uno.Converters"
+    xmlns:converters="using:Zafiro.Uno.Controls.Converters"
     xmlns:vconvs="using:UnoDesigner.Converters"
     RequestedTheme="Light">
 
@@ -12,8 +12,8 @@
         <ResourceDictionary>
 
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="ms-appx:///Zafiro.Uwp.Design.Uno/Styles/Styles.xaml" />
-                <ResourceDictionary Source="ms-appx:///Zafiro.Uwp.Uno/Styles.xaml" />
+                <ResourceDictionary Source="ms-appx:///Zafiro.Uno.Controls.Design/Styles/Styles.xaml" />
+                <ResourceDictionary Source="ms-appx:///Zafiro.Uno.Controls/Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
             <local:Composition x:Key="Composition" />
