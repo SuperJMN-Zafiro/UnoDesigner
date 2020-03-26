@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnoDesigner.UWP", "UnoDesig
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnoDesigner.Wasm", "UnoDesigner\UnoDesigner.Wasm\UnoDesigner.Wasm.csproj", "{951BA517-9FF1-4FA3-BEE8-9ED915E49E61}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Zafiro", "Zafiro", "{7AA704E7-7D2A-4AAB-BC18-1D99A4434624}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{7AA704E7-7D2A-4AAB-BC18-1D99A4434624}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Designer.Core", "ZafiroDesigner.Core\Designer.Core\Designer.Core.csproj", "{E9E0A681-B6FF-4E76-8BE0-5646531E65BB}"
 EndProject
